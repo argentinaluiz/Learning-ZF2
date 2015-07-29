@@ -1,5 +1,7 @@
 <?php
 
+namespace Bookstore;
+
 return array(
     'router' => array(
         'routes' => array(
@@ -43,4 +45,23 @@ return array(
             ),
         ),
     ),
+
+    // DOCTRINE
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
+                'cache' => 'array',
+                'extension' => '.dcm.yml',
+                'paths' => [
+                    __DIR__ . '/../src/' . __NAMESPACE__ . '/Resources/config/doctrine'
+                ]
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ],
+            ],
+        ],
+    ],
 );

@@ -1,3 +1,9 @@
 <div class="jumbotron">
-    <h1><?php echo $this->name ?></h1>
+    <h1>Categorias</h1>
+
+    <ul>
+        <?php foreach($this->category as $category) : ?>
+            <li><?= $category->name; ?></li>
+        <?php endforeach; ?>
+    </ul>
 </div>

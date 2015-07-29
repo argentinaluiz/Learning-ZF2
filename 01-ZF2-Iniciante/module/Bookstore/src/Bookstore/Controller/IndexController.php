@@ -9,7 +9,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        $name = "Candido Souza";
-        return new ViewModel(['name' => $name]);
+        $categoryService = $this->getServiceLocator()->get('Bookstore\Services\CategoryService');
+        $category = $categoryService->fetchAll();
+        return new ViewModel(['category' => $category]);
     }
 }

@@ -2,30 +2,19 @@
 
 namespace Bookstore\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Class Category
- *
- * @ORM\Entity
- * @ORM\Table(name="categories")
- * @ORM\Entity(repositoryClass="Bookstore\Entity\CategoryRepository")
+ * @package Bookstore\Entity
  */
 class Category
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=127, nullable=false)
      */
     protected $name;
 
@@ -46,11 +35,13 @@ class Category
     }
 
     /**
-     * @param mixed $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**

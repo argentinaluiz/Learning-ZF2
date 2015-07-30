@@ -1,8 +1,8 @@
 <div class="jumbotron">
     <h1>Bookstore Index</h1>
-    <ul>
+    <ul class="list-group">
         <?php foreach ($this->categories as $category) : ?>
-        <li><?php $category->getName; ?></li>
+            <li class="list-group-item"><?= $category->getName(); ?></li>
         <?php endforeach; ?>
     </ul>
 </div>

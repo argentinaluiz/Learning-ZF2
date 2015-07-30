@@ -30,11 +30,11 @@ class CategoriesController extends AbstractActionController
             ->findAll();
 
         $page = $this->params()->fromRoute('page');
-        $paginator = new Paginator(new ArrayAdapter($listCategory));
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setDefaultItemCountPerPage(7);
+        $pagination = new Paginator(new ArrayAdapter($listCategory));
+        $pagination->setCurrentPageNumber($page);
+        $pagination->setDefaultItemCountPerPage(7);
 
-        return new ViewModel(['data' => $paginator, 'page' => $page]);
+        return new ViewModel(['data' => $pagination, 'page' => $page]);
     }
 
     /**

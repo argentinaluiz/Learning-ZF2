@@ -1,0 +1,14 @@
+Bookstore\Entity\Category:
+    type: entity
+    table: categories
+    repositoryClass: Bookstore\Entity\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+          type: string
+          length: 100

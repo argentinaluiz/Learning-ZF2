@@ -65,16 +65,36 @@ return array(
         ),
     ),
 
+//    DOCTRINE
+
+//    MAPPING ANNOTATION
+//    'doctrine' => array(
+//        'driver' => array(
+//            __NAMESPACE__ . '_driver' => array(
+//                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+//                'cache' => 'array',
+//                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+//            ),
+//            'orm_default' => array(
+//                'drivers' => array(
+//                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+//                ),
+//            ),
+//        ),
+//    ),
+
+//    MAPPING YAML
     'doctrine' => array(
         'driver' => array(
-            __NAMESPACE__ . '_driver' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+            '_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
                 'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+                'extension' => '.orm.yml',
+                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Resources/config/doctrine/')
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                    __NAMESPACE__ . '\Entity' => '_driver',
                 ),
             ),
         ),

@@ -49,7 +49,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Bookstore\Controller\Index' => 'Bookstore\Controller\IndexController',
-            'categorias' => 'BookstoreAdmin\Controller\CategoriesController',
+            'categories' => 'BookstoreAdmin\Controller\CategoriesController',
         ),
     ),
     'view_manager' => array(

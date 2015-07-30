@@ -18,6 +18,11 @@ class Category
      */
     protected $name;
 
+    public function __construct($options = null)
+    {
+        Configurator::configure($this, $options);
+    }
+
     /**
      * @return mixed
      */

@@ -10,6 +10,7 @@ use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
 
+use BookstoreAdmin\Form\Category as FormCategory;
 
 class CategoriesController extends AbstractActionController
 {
@@ -32,9 +33,30 @@ class CategoriesController extends AbstractActionController
         $page = $this->params()->fromRoute('page');
         $pagination = new Paginator(new ArrayAdapter($listCategory));
         $pagination->setCurrentPageNumber($page);
-        $pagination->setDefaultItemCountPerPage(7);
+        $pagination->setDefaultItemCountPerPage(10);
 
         return new ViewModel(['data' => $pagination, 'page' => $page]);
+    }
+
+    public function newAction()
+    {
+        $form = new FormCategory();
+
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+
+                $service = $this->getServiceLocator()->get('Bookstore\Service\Category');
+                $service->insert($request->getPost()->toArray());
+
+                return $this->redirect()->toRoute('home-admin', ['controller' => 'categories']);
+            }
+        }
+
+        return new ViewModel(['form' => $form]);
     }
 
     /**

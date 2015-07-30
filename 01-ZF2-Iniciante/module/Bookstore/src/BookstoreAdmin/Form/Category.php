@@ -10,7 +10,10 @@ class Category extends Form
     {
         parent::__construct('category');
 
-        $this->setAttribute('method', 'POST');
+        $this->setAttribute('method', 'POST')
+            ->setAttributes([
+                'class'=> 'form-horizontal',
+            ]);
         $this->setInputFilter(new CategoryFilter());
 
         $this->add([
@@ -24,11 +27,11 @@ class Category extends Form
             'name' => 'name',
             'options' => [
                 'type' => 'text',
-                'label' => 'Nome',
+                'label' => 'Nome: ',
             ],
             'attributes' => [
                 'id' => 'name',
-                'placeholder' => 'Nome',
+                'placeholder' => 'Nome da Categoria',
             ]
         ]);
 

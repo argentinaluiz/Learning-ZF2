@@ -2,6 +2,7 @@
 
 namespace Bookstore;
 
+use Bookstore\Service\Category as CategoryService;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -29,5 +30,16 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                'Bookstore\Service\Category' => function($service) {
+                    return new CategoryService($service->get('Doctrine\ORM\EntityManager'));
+                }
+            ]
+        ];
     }
 }

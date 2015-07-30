@@ -19,7 +19,7 @@ class CategoryFilter extends InputFilter
                 ['name' => 'NotEmpty'],
                 'options' => [
                     'messages' => [
-                        'Insira um Nome para a Categoria'
+                        'isEmpty' => 'Insira um Nome para a Categoria'
                     ]
                 ]
             ]

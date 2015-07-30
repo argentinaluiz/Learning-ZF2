@@ -15,6 +15,15 @@ return array(
                     ),
                 ),
             ),
+            'home-admin' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/[:controller[/:action]]',
+                    'defaults' => array(
+                        'action' => 'index'
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -38,7 +47,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Bookstore\Controller\Index' => 'Bookstore\Controller\IndexController'
+            'Bookstore\Controller\Index' => 'Bookstore\Controller\IndexController',
+            'categorias' => 'BookstoreAdmin\Controller\CategoriesController',
         ),
     ),
     'view_manager' => array(

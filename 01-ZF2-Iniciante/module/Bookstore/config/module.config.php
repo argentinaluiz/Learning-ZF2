@@ -18,9 +18,10 @@ return array(
             'home-admin' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/admin/[:controller[/:action]]',
+                    'route' => '/admin/[:controller[/:action][/page/:page]]',
                     'defaults' => array(
-                        'action' => 'index'
+                        'action' => 'index',
+                        'page' => 1
                     ),
                 ),
             ),

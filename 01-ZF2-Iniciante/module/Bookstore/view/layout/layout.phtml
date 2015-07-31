@@ -12,6 +12,7 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath('css/style.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
 
@@ -43,12 +44,18 @@
             </div>
         </nav>
         <div class="container">
+            <div class="row">
             <?php echo $this->content; ?>
-            <hr>
+            </div>
+        </div> <!-- /container -->
+        <div class="container">
+            <div class="row">
             <footer>
                 <p>&copy; 2005 - <?php echo date('Y') ?> by Bookstore</p>
             </footer>
+            </div>
         </div> <!-- /container -->
+
         <?php echo $this->inlineScript() ?>
     </body>
 </html>

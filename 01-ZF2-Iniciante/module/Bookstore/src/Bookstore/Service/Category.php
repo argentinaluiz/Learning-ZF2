@@ -3,6 +3,8 @@
 namespace Bookstore\Service;
 
 use Doctrine\ORM\EntityManager;
+
+use Bookstore\Entity\Configurator;
 use Bookstore\Entity\Category as CategoryEntity;
 
 class Category
@@ -25,6 +27,17 @@ class Category
     {
         $entity = new CategoryEntity($data);
 
+        $this->em->persist($entity);
+        $this->em->flush();
+
+        return $entity;
+    }
+
+    public function update(Array $data)
+    {
+        $entity = $this->em->getReference('Bookstore\Entity\Category', $data);
+
+        $entity = Configurator::configure($entity, $data);
         $this->em->persist($entity);
         $this->em->flush();
 

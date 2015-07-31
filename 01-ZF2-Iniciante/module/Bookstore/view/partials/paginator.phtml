@@ -11,14 +11,16 @@ $formatUrl = function ($page) use ($urlPattern) {
 <?php if ($this->pageCount > 1): ?>
 
 
-    <div class="center-block">
+    <div class="text-center">
         <p>
+            <small>
             pagina
             <?php echo $this->current;?>
             de
             <?php echo $this->pageCount;?>
+            </small>
         </p>
-        <ul class="pagination pagination-sm ">
+        <ul class="pagination pagination-sm">
             <?php if (isset($this->previous)): ?>
                 <li><a href="<?php echo $formatUrl($this->previous) ?>"
                        title="Ir para pagina anterior"><span aria-hidden="true">&laquo;</span></a></li>

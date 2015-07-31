@@ -15,6 +15,15 @@ return array(
                     ),
                 ),
             ),
+            'home-admin-intern' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/[:controller[/:action]][/:id]',
+                    'constraints' => array(
+                        'id'=> '[0-9]+'
+                    )
+                ),
+            ),
             'home-admin' => array(
                 'type' => 'Segment',
                 'options' => array(

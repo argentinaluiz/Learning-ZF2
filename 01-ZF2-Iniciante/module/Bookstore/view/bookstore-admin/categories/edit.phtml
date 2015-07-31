@@ -1,10 +1,12 @@
-<h1>Nova Categorias</h1>
+<h1>Editar Categoria</h1>
 
 <div class="jumbotron">
 
+    <a href="<?= $this->url('home-admin',['controller'=>'categories','action'=>'index']); ?>" title="Categorias" class="btn btn alert-warning">Voltar | Categorias</a>
+
     <?php
     $form = $this->form;
-    $form->setAttribute('Action', $this->url('home-admin', ['controller' => 'categories', 'action' => 'new']));
+    $form->setAttribute('Action', $this->url('home-admin-intern', ['controller' => 'categories', 'action' => 'edit']));
     $form->prepare();
     ?>
     <?= $this->form()->openTag($form);?>

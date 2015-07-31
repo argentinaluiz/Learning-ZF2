@@ -28,10 +28,14 @@ class Category extends Form
             'options' => [
                 'type' => 'text',
                 'label' => 'Nome: ',
+                'label_attributes' => [
+                    'class'  => 'control-label'
+                ],
             ],
             'attributes' => [
                 'id' => 'name',
                 'placeholder' => 'Nome da Categoria',
+                'class' => 'form-control'
             ]
         ]);
 
@@ -40,7 +44,7 @@ class Category extends Form
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => [
                 'value' => 'Salvar',
-                'class' => 'btn-success'
+                'class' => 'btn alert-success'
             ]
         ]);
     }

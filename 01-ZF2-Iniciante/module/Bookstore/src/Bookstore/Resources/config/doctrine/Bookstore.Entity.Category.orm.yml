@@ -12,3 +12,8 @@ Bookstore\Entity\Category:
         name:
           type: string
           length: 100
+    lifecycleCallbacks: {  }
+    oneToMany:
+        books:
+            targetEntity: Book
+            mappedBy: category

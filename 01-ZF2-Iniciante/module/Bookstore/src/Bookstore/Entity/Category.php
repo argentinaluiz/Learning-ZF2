@@ -1,6 +1,7 @@
 <?php
 
 namespace Bookstore\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Category
@@ -11,16 +12,28 @@ class Category
     /**
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      */
-    protected $name;
+    private $name;
 
+    /**
+     * @var Array
+     */
+    private $books;
+
+    /**
+     * Construct
+     *
+     * @param null $options
+     * @throws \Exception
+     */
     public function __construct($options = null)
     {
         Configurator::configure($this, $options);
+        $this->books = new ArrayCollection();
     }
 
     /**
@@ -47,6 +60,14 @@ class Category
     {
         $this->name = $name;
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBooks()
+    {
+        return $this->books;
     }
 
     /**

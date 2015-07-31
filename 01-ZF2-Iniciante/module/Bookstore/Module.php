@@ -3,6 +3,10 @@
 namespace Bookstore;
 
 use Bookstore\Service\Category as CategoryService;
+use Bookstore\Service\Book as BookService;
+
+use BookstoreAdmin\Form\Book as BookForm;
+
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -38,6 +42,15 @@ class Module
             'factories' => [
                 'Bookstore\Service\Category' => function($service) {
                     return new CategoryService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Bookstore\Service\Book' => function($service) {
+                    return new BookService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'BookstoreAdmin\Form\Book' => function($service) {
+                    $em = $service->get('Doctrine\ORM\EntityManager');
+                    $repository = $em->getRepository('Bookstore\Entity\Category');
+                    $categories = $repository->fetchPairs();
+                    return new BookForm(null, $categories);
                 }
             ]
         ];

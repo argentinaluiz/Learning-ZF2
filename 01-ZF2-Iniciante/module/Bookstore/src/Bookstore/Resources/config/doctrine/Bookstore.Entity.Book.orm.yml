@@ -1,0 +1,31 @@
+Bookstore\Entity\Book:
+    type: entity
+    table: books
+    repositoryClass: Bookstore\Entity\BookRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 100
+        author:
+            type: string
+            length: 100
+        isbn:
+            type: string
+            length: 100
+        price:
+            type: float
+    lifecycleCallbacks: {  }
+    manyToOne:
+        category:
+            targetEntity: Category
+            inversedBy: books
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+                onDelete: CASCADE

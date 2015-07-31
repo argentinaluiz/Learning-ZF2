@@ -1,0 +1,46 @@
+<h1>Livros</h1>
+
+
+
+
+    <a href="<?= $this->url('home-admin',['controller'=>'books','action'=>'new']); ?>" title="Novo Livro" class="btn alert-success">Novo Livro</a>
+    <br>
+    <br>
+    <table class="table table-condensed">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Autor</th>
+            <th>Categoria</th>
+            <th>Valor</th>
+            <th>ISBN</th>
+            <th>Ação</th>
+        </tr>
+        <?php foreach ($this->data as $entity) : ?>
+            <tr>
+                <td><?= $entity->getId(); ?></td>
+                <td><?= $entity->getName(); ?></td>
+                <td><?= $entity->getAuthor(); ?></td>
+                <td><?= $entity->getCategory(); ?></td>
+                <td><?= $entity->getPrice(); ?></td>
+                <td><?= $entity->getIsbn(); ?></td>
+                <td>
+                    <a href="<?= $this->url('home-admin-intern', ['controller' => 'books','action' => 'edit','id' => $entity->getId()]) ;?>" title="Edição de Livro" class="btn alert-info">Editar</a>
+
+                    <a href="<?= $this->url('home-admin-intern', [
+                        'controller' => 'books',
+                        'action' => 'delete',
+                        'id' => $entity->getId()
+                    ]) ;?>" title="Deletar Book" class="btn alert-danger">Deletar</a>
+                </td>
+
+            </tr>
+        <?php endforeach; ?>
+
+
+    </table>
+
+    <div class="">
+    <?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator', ['route' => 'home-admin']) ;?>
+    </div>
+

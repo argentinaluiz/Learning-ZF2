@@ -19,7 +19,7 @@ abstract class CRUDController extends AbstractActionController
     /**
      * @var EntityManager
      */
-    private $em;
+    protected $em;
     protected $service;
     protected $entity;
     protected $form;
@@ -106,7 +106,7 @@ abstract class CRUDController extends AbstractActionController
     /**
      * @return EntityManager
      */
-    private function getEm()
+    public function getEm()
     {
         if (null === $this->em)
             $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');

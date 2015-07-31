@@ -1,6 +1,6 @@
 <h1>Nova Categorias</h1>
 
-<div class="jumbotron">
+<a href="<?= $this->url('home-admin',['controller'=>'categories','action'=>'index']); ?>" title="Categorias" class="btn btn alert-warning">Voltar | Categorias</a>
 
     <?php
     $form = $this->form;
@@ -18,5 +18,3 @@
     <?=  $this->formSubmit($form->get('submit'));?>
 
     <?php $this->form()->closeTag();?>
-
-</div>

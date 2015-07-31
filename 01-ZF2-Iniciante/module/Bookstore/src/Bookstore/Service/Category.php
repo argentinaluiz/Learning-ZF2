@@ -35,13 +35,25 @@ class Category
 
     public function update(Array $data)
     {
-        $entity = $this->em->getReference('Bookstore\Entity\Category', $data);
+        $entity = $this->em->getReference('Bookstore\Entity\Category', $data['id']);
 
         $entity = Configurator::configure($entity, $data);
         $this->em->persist($entity);
         $this->em->flush();
 
         return $entity;
+    }
+
+    public function delete($id)
+    {
+        $entity = $this->em->getReference('Bookstore\Entity\Category', $id);
+
+        if ($entity) {
+            $this->em->remove($entity);
+            $this->em->flush();
+
+            return $id;
+        }
     }
 
 

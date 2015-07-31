@@ -1,12 +1,12 @@
 <h1>Categorias</h1>
 
-<div class="jumbotron">
-
     <?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator', ['route' => 'categorias/page']) ;?>
 
-    <a href="<?= $this->url('home-admin',['controller'=>'categories','action'=>'new']); ?>" title="Nova Categoria" class="btn alert-success">Nova Categoria</a>
 
-    <table class="table">
+    <a href="<?= $this->url('home-admin',['controller'=>'categories','action'=>'new']); ?>" title="Nova Categoria" class="btn alert-success">Nova Categoria</a>
+    <br>
+    <br>
+    <table class="table table-condensed">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -17,13 +17,15 @@
                 <td><?= $entity->getId(); ?></td>
                 <td><?= $entity->getName(); ?></td>
                 <td>
+                    <a href="<?= $this->url('home-admin-intern', ['controller' => 'categories','action' => 'edit','id' => $entity->getId()]) ;?>" title="Edição de Categorias" class="btn alert-info">Editar</a>
+
                     <a href="<?= $this->url('home-admin-intern', [
                         'controller' => 'categories',
-                        'action' => 'edit',
+                        'action' => 'delete',
                         'id' => $entity->getId()
-                    ]) ;?>
-                    " title="Edição de Categorias" class="btn alert-info">Editar</a>
+                    ]) ;?>" title="Deletar Categoria" class="btn alert-danger">Deletar</a>
                 </td>
+
             </tr>
         <?php endforeach; ?>
 
@@ -33,4 +35,4 @@
     <div class="">
     <?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator', ['route' => 'home-admin']) ;?>
     </div>
-</div>
+

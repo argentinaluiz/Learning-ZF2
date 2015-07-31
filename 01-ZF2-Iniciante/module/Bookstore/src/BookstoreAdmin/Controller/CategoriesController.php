@@ -88,6 +88,14 @@ class CategoriesController extends AbstractActionController
         return new ViewModel(['form' => $form]);
     }
 
+    public function deleteAction()
+    {
+        $service = $this->getServiceLocator()->get('Bookstore\Service\Category');
+
+        if ($service->delete($this->params()->fromRoute('id', 0)))
+            return $this->redirect()->toRoute('home-admin', ['controller' => 'categories']);
+    }
+
     /**
      * @return EntityManager
      */

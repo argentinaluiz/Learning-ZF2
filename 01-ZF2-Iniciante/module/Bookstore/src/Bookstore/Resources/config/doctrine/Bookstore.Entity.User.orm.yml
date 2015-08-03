@@ -1,0 +1,24 @@
+Bookstore\Entity\User:
+    type: entity
+    table: users
+    repositoryClass: Bookstore\Entity\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+        salt:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -34,6 +34,26 @@ return array(
                     ),
                 ),
             ),
+            'bookstore-admin-auth' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/auth',
+                    'defaults' => array(
+                        'action' => 'index',
+                        'controller'=>'bookstore-admin/auth'
+                    ),
+                ),
+            ),
+            'bookstore-admin-logout' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/auth/logout',
+                    'defaults' => array(
+                        'action' => 'logout',
+                        'controller'=>'bookstore-admin/auth'
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -61,6 +81,7 @@ return array(
             'categories' => 'BookstoreAdmin\Controller\CategoriesController',
             'books' => 'BookstoreAdmin\Controller\BooksController',
             'users' => 'BookstoreAdmin\Controller\UsersController',
+            'bookstore-admin/auth' => 'BookstoreAdmin\Controller\AuthController',
         ),
     ),
     'view_manager' => array(

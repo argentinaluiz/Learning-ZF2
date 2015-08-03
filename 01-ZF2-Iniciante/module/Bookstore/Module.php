@@ -5,6 +5,7 @@ namespace Bookstore;
 use Bookstore\Service\Category as CategoryService;
 use Bookstore\Service\Book as BookService;
 use Bookstore\Service\User as UserService;
+use Bookstore\Auth\Adapter as AuthAdapter;
 
 use BookstoreAdmin\Form\Book as BookForm;
 
@@ -55,6 +56,9 @@ class Module
                 },
                 'Bookstore\Service\User' => function($service) {
                     return new UserService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Bookstore\Auth\Adapter' => function($service) {
+                    return new AuthAdapter($service->get('Doctrine\ORM\EntityManager'));
                 },
             ]
         ];

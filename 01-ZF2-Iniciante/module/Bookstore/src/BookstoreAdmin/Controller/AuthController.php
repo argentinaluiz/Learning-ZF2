@@ -11,6 +11,11 @@ use BookstoreAdmin\Form\Login as FormLogin;
 
 class AuthController extends AbstractActionController
 {
+    /**
+     * Login User
+     *
+     * @return \Zend\Http\Response|ViewModel
+     */
     public function indexAction()
     {
         $form = new FormLogin();
@@ -32,11 +37,11 @@ class AuthController extends AbstractActionController
                 $authAdapter->setUsername($data['email'])
                     ->setPassword($data['password']);
 
-                $result= $auth->authenticate($authAdapter);
+                $result = $auth->authenticate($authAdapter);
 
                 if ($result->isValid()) {
-                    $sessionStorage->write($auth->getIdentity(), ['user'], null);
-                    return $this->redirect()->toRoute('bookstore-admin', ['controller' => 'categories']);
+                    $sessionStorage->write($auth->getIdentity()['user'], null);
+                    return $this->redirect()->toRoute('home-admin', ['controller' => 'categories']);
                 } else
                     $error = true;
             }
@@ -45,6 +50,11 @@ class AuthController extends AbstractActionController
         return new ViewModel(['form' => $form, 'error' => $error]);
     }
 
+    /**
+     * Logout user
+     *
+     * @return \Zend\Http\Response
+     */
     public function logoutAction() {
         $auth = new AuthenticationService;
         $auth->setStorage(new SessionStorage('BookstoreAdmin'));

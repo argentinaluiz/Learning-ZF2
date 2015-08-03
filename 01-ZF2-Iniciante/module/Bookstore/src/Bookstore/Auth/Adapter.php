@@ -71,8 +71,9 @@ class Adapter implements AdapterInterface
 
         $user = $repository->findByEmailAndPassword($this->getUsername(), $this->getPassword());
 
-        if ($user)
+        if ($user) {
             return new Result(Result::SUCCESS, ['user' => $user], ['Logado com sucesso!!!']);
-        return new Result(Result::FAILURE_CREDENTIAL_INVALID, null, ['Error: Usuário ou Senha inválido']);
+        }
+        return new Result(Result::FAILURE_CREDENTIAL_INVALID, null, []);
     }
 }

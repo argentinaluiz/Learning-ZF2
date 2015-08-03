@@ -4,6 +4,7 @@ namespace Bookstore;
 
 use Bookstore\Service\Category as CategoryService;
 use Bookstore\Service\Book as BookService;
+use Bookstore\Service\User as UserService;
 
 use BookstoreAdmin\Form\Book as BookForm;
 
@@ -51,7 +52,10 @@ class Module
                     $repository = $em->getRepository('Bookstore\Entity\Category');
                     $categories = $repository->fetchPairs();
                     return new BookForm(null, $categories);
-                }
+                },
+                'Bookstore\Service\User' => function($service) {
+                    return new UserService($service->get('Doctrine\ORM\EntityManager'));
+                },
             ]
         ];
     }

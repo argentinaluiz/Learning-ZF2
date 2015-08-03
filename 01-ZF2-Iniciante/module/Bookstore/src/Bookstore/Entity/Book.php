@@ -145,7 +145,7 @@ class Book
             'author' => $this->getAuthor(),
             'isbn' => $this->getIsbn(),
             'price' => $this->getPrice(),
-            'category' => $this->getCategory(),
+            'category' => $this->getCategory()->getId()
         ];
     }
 }

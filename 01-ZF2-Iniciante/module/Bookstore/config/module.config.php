@@ -60,6 +60,7 @@ return array(
             'Bookstore\Controller\Index' => 'Bookstore\Controller\IndexController',
             'categories' => 'BookstoreAdmin\Controller\CategoriesController',
             'books' => 'BookstoreAdmin\Controller\BooksController',
+            'users' => 'BookstoreAdmin\Controller\UsersController',
         ),
     ),
     'view_manager' => array(

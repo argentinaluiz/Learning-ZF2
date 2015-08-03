@@ -3,7 +3,7 @@
     <?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator', ['route' => 'home-admin']) ;?>
 
 
-    <a href="<?= $this->url('bookstore-admin',['controller'=>'users','action'=>'new']); ?>" title="Nova Usuário" class="btn alert-success">Novo Usuário</a>
+    <a href="<?= $this->url('home-admin',['controller'=>'users','action'=>'new']); ?>" title="Nova Usuário" class="btn alert-success">Novo Usuário</a>
     <br>
     <br>
     <table class="table table-condensed">
@@ -19,9 +19,9 @@
                 <td><?= $entity->getName(); ?></td>
                 <td><?= $entity->getEmail(); ?></td>
                 <td>
-                    <a href="<?= $this->url('bookstore-admin-intern', ['controller' => 'users','action' => 'edit','id' => $entity->getId()]) ;?>" title="Edição de Usuário" class="btn alert-info">Editar</a>
+                    <a href="<?= $this->url('home-admin-intern', ['controller' => 'users','action' => 'edit','id' => $entity->getId()]) ;?>" title="Edição de Usuário" class="btn alert-info">Editar</a>
 
-                    <a href="<?= $this->url('bookstore-admin-intern', [
+                    <a href="<?= $this->url('home-admin-intern', [
                         'controller' => 'users',
                         'action' => 'delete',
                         'id' => $entity->getId()

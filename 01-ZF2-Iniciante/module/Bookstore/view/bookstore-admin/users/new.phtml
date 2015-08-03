@@ -1,12 +1,12 @@
 <h1>Novo Usuário</h1>
 
-<a href="<?= $this->url('bookstore-admin',['controller'=>'users','action'=>'index']); ?>" title="Usuário" class="btn btn alert-warning">Voltar | Usuários</a>
+<a href="<?= $this->url('home-admin',['controller'=>'users','action'=>'index']); ?>" title="Usuário" class="btn btn alert-warning">Voltar | Usuários</a>
 
 <div class="row">
     <div class="col-lg-6">
     <?php
     $form = $this->form;
-    $form->setAttribute('Action', $this->url('bookstore-admin', ['controller' => 'users', 'action' => 'new']));
+    $form->setAttribute('Action', $this->url('home-admin', ['controller' => 'users', 'action' => 'new']));
     $form->prepare();
     ?>
     <?= $this->form()->openTag($form);?>

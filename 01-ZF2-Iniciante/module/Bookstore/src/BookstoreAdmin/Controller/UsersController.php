@@ -18,7 +18,7 @@ class UsersController extends CRUDController
         $this->service      = 'Bookstore\Service\User';
         $this->form         = 'BookstoreAdmin\Form\User';
         $this->controller   = 'users';
-        $this->route        = 'bookstore-admin';
+        $this->route        = 'home-admin';
     }
 
     /**

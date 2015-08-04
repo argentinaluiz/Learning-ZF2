@@ -8,8 +8,8 @@ use Zend\Crypt\Key\Derivation\Pbkdf2;
 use Zend\Stdlib\Hydrator;
 
 /**
- * UserUsers
- *
+ * Class User
+ * @package User\Entity
  */
 class User
 {
@@ -21,7 +21,7 @@ class User
     /**
      * @var string
      */
-    private $nome;
+    private $name;
 
     /**
      * @var string
@@ -59,9 +59,7 @@ class User
     private $createdAt;
 
     /**
-     * User constructor.
-     * @param \DateTime
-     * @param \DateTime
+     * @param array $options
      */
     public function __construct(array $options = [])
     {
@@ -85,18 +83,18 @@ class User
     /**
      * @return string
      */
-    public function getNome()
+    public function getName()
     {
-        return $this->nome;
+        return $this->name;
     }
 
     /**
-     * @param $nome
+     * @param $name
      * @return $this
      */
-    public function setNome($nome)
+    public function setName($name)
     {
-        $this->nome = $nome;
+        $this->name = $name;
         return $this;
     }
 

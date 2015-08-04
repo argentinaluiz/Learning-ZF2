@@ -12,4 +12,6 @@
 
 > - $ php public/index.php orm:schema-tool:create
 
+> - $ php vendor/bin/doctrine-module data-fixture:import --purge-with-truncate
+
 > - $ php -S 127.0.0.1:8080 -t public/

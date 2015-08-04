@@ -15,6 +15,8 @@ class User
     {
         parent::__construct('user', $options );
 
+        $this->setInputFilter(new UserFilter());
+
         $this->setAttribute('method', 'post');
 
         $id = new Hidden('id');

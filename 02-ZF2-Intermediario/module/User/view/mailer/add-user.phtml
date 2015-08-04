@@ -1,0 +1,7 @@
+<h3>Olá <?= $this->name;?>!</h3>
+
+<p>Confirmação de cadastro!</p>
+
+<p>Para confirmar sua conta, acesse: http://<?= $this->url('user-activate', ['key' => $this->activationkey]);?></p>
+
+<small>Não responda esse E-mail!</small>

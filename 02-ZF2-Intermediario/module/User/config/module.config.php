@@ -14,7 +14,17 @@ return [
                         'action' => 'register',
                     ]
                 ]
-            ]
+            ],
+            'user-activate' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/register/activate[/:key]',
+                    'defaults' => [
+                        'controller' => 'User\Controller\Index',
+                        'action' => 'activate'
+                    ]
+                ]
+            ],
         ]
     ],
     'controllers' => [

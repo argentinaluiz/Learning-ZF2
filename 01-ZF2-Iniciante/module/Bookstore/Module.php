@@ -84,4 +84,13 @@ class Module
             ]
         ];
     }
+
+    public function getViewHelperConfig()
+    {
+        return [
+            'invokables' => [
+                'UserIdentity' => new View\Helper\UserIdentity
+            ]
+        ];
+    }
 }

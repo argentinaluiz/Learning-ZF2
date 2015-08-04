@@ -6,7 +6,7 @@ return [
         'DoctrineORMModule',
         'DoctrineDataFixtureModule',
         'Base',
-        #'User',
+        'User',
     ],
     'module_listener_options' => [
         'module_paths' => [

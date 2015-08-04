@@ -1,4 +1,4 @@
 <?php
-namespace Base;
+namespace User;
 
 return [];

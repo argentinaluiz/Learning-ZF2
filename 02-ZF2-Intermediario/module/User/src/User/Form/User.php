@@ -9,7 +9,7 @@ use Zend\Form\Element\Submit;
 use Zend\Form\Element\Text;
 use Zend\Form\Form;
 
-class User
+class User extends Form
 {
     public function __construct($name = null, $options = [])
     {
@@ -17,33 +17,83 @@ class User
 
         $this->setInputFilter(new UserFilter());
 
-        $this->setAttribute('method', 'post');
+        $this->setAttribute('method', 'POST')
+            ->setAttributes([
+                'class'=> 'form-horizontal',
+            ]);
 
-        $id = new Hidden('id');
-        $this->add($id);
+        $this->add([
+            'name' => 'id',
+            'attributes' => [
+                'type' => 'hidden'
+            ]
+        ]);
 
-        $name = new Text('name');
-        $name->setLabel('Nome: ')
-            ->setAttribute('placeholder', 'Digite seu Nome' );
-        $this->add($name);
+        $this->add([
+            'name' => 'name',
+            'options' => [
+                'type' => 'text',
+                'label' => 'Nome: ',
+                'label_attributes' => [
+                    'class'  => 'control-label'
+                ],
+            ],
+            'attributes' => [
+                'id' => 'name',
+                'placeholder' => 'Digite seu Usuário',
+                'class' => 'form-control'
+            ]
+        ]);
 
-        $email = new Text('email');
-        $email->setLabel('E-mail: ')
-            ->setAttribute('placeholder', 'Digite seu Email' );
-        $this->add($email);
+        $this->add([
+            'name' => 'email',
+            'options' => [
+                'type' => 'email',
+                'label' => 'E-mail: ',
+                'label_attributes' => [
+                    'class'  => 'control-label'
+                ],
+            ],
+            'attributes' => [
+                'id' => 'email',
+                'placeholder' => 'Digite seu E-mail',
+                'class' => 'form-control'
+            ]
+        ]);
 
-        $password = new Password('password');
-        $password->setLabel('Senha: ')
-            ->setAttribute('placeholder', 'Digite sua Senha' );
-        $this->add($password);
+        $this->add([
+            'name' => 'password',
+            'options' => [
+                'type' => 'password',
+                'label' => 'Senha: ',
+                'label_attributes' => [
+                    'class'  => 'control-label',
+                    'type' => 'password',
+                ],
+            ],
+            'attributes' => [
+                'id' => 'password',
+                'class' => 'form-control',
+                'placeholder' => 'Digite sua Senha',
+            ]
+        ]);
 
-        $confirmation = new Password('confirmation');
-        $confirmation->setLabel('Redigite: ')
-            ->setAttribute('placeholder', 'Redigite a Senha' );
-        $this->add($confirmation);
-
-        $csrf = new Csrf('security');
-        $this->add($csrf);
+        $this->add([
+            'name' => 'confirmation',
+            'options' => [
+                'type' => 'password',
+                'label' => 'Redigite a Senha: ',
+                'label_attributes' => [
+                    'class'  => 'control-label',
+                    'type' => 'password',
+                ],
+            ],
+            'attributes' => [
+                'id' => 'password',
+                'class' => 'form-control',
+                'placeholder' => 'Redigite sua Senha',
+            ]
+        ]);
 
         $this->add([
             'name' => 'submit',

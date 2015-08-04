@@ -9,6 +9,9 @@ use Bookstore\Auth\Adapter as AuthAdapter;
 
 use BookstoreAdmin\Form\Book as BookForm;
 
+use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\Storage\Session as SessionStorage;
+use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -36,6 +39,24 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function init(ModuleManager $moduleManager)
+    {
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+
+        $sharedEvents->attach("BookstoreAdmin", 'dispatch', function($e) {
+            $auth = new AuthenticationService();
+            $auth->setStorage(new SessionStorage("BookstoreAdmin"));
+
+            $controller = $e->getTarget();
+            $matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
+
+            if (!$auth->hasIdentity() and ($matchedRoute == 'home-admin' or $matchedRoute == 'home-admin-intern')) {
+                return $controller->redirect()->toRoute('bookstore-admin-auth');
+            }
+        }, 99);
+
     }
 
     public function getServiceConfig()

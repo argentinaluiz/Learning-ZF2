@@ -8,9 +8,11 @@ return [
                 'type' => 'Literal',
                 'options' => [
                     'route' => '/register',
-                    '__NAMESPACE__' => 'User/Controller',
-                    'controller' => 'Index',
-                    'action' => 'register'
+                    'defaults' => [
+                        '__NAMESPACE__' => 'User\Controller',
+                        'controller' => 'Index',
+                        'action' => 'register',
+                    ]
                 ]
             ]
         ]
@@ -18,7 +20,6 @@ return [
     'controllers' => [
         'invokables' => [
             'User\Controller\Index' => 'User\Controller\IndexController',
-            ''
         ]
     ],
     'view_manager' => [

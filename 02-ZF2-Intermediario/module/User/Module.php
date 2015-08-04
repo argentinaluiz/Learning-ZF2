@@ -5,7 +5,7 @@ namespace User;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
-class User
+class Module
 {
     public function onBootstrap(MvcEvent $e)
     {

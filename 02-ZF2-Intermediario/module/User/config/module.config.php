@@ -43,7 +43,7 @@ return [
             '_driver' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
                 'cache' => 'array',
-                'extension' => '.orm.yml',
+                'extension' => '.dcm.yml',
                 'paths' => [
                     __DIR__ . '/../src/' . __NAMESPACE__ . '/Resources/config/doctrine/'
                 ]

@@ -3,7 +3,15 @@
 <div class="jumbotron">
     <ul class="list-group">
         <?php foreach ($this->categories as $category) : ?>
-            <li class="list-group-item"><?= $category->getName(); ?></li>
+            <li class="list-group-item"><small class="alert-info">Categoria:</small> <?= $category->getName(); ?>
+                <ul>
+                    <?php foreach ($category->getBooks() as $book) : ?>
+                        <li class="list-group-item"><small class="alert-success">Livros:</small> <?= $book->getName(); ?>
+
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
         <?php endforeach; ?>
     </ul>
 </div>

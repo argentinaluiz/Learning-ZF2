@@ -1,4 +1,4 @@
-# Estudos ZF2 Iniciante
+# Estudos ZF2 Intermediário
 
 :book: Estudos Zend framework
 

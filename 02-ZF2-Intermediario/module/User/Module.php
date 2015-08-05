@@ -8,6 +8,8 @@ use Zend\Mvc\MvcEvent;
 use Zend\Mail\Transport\Smtp as SmtpTransport;
 use Zend\Mail\Transport\SmtpOptions;
 
+use User\Service\User as UserService;
+
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -39,19 +41,17 @@ class Module
             'factories' => [
                 'User\Mail\Transport' => function($sm) {
                     $config = $sm->get('Config');
-                    $options = new SmtpOptions($config['mail']);
 
-                    $transport = new SmtpTransport();
+                    $transport = new SmtpTransport;
+                    $options = new SmtpOptions($config['mail']);
                     $transport->setOptions($options);
 
                     return $transport;
                 },
                 'User\Service\User' => function ($sm) {
-                    return new Service\User(
-                        $sm->get('Doctrine\ORM\EntityManager'),
-                        $sm->get('Use\Mail\Transport'),
-                        $sm->get('View')
-                    );
+                    return new Service\User($sm->get('Doctrine\ORM\EntityManager'),
+                        $sm->get('User\Mail\Transport'),
+                        $sm->get('View'));
                 }
             ]
         ];

@@ -2,15 +2,15 @@
 
 return [
     'mail' => [
-        'name' => 'smtp.googlemail.com',
-        'host' => 'smtp.googlemail.com',
+        'name' => 'gmail',
+        'host' => 'smtp.gmail.com',
+        'port' => 587,
         'connection_class' => 'login',
         'connection_config' => [
             'username' => '',
             'password' => '',
             'ssl' => 'tls',
-            'port' => 465,
-            'form' => ''
+            'from' => '',
         ]
 
     ]

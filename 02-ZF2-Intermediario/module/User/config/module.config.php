@@ -15,16 +15,16 @@ return [
                     ]
                 ]
             ],
-            'user-activate' => [
+            'user-activate' => array(
                 'type' => 'Segment',
-                'options' => [
+                'options' => array(
                     'route' => '/register/activate[/:key]',
-                    'defaults' => [
-                        'controller' => 'User\Controller\Index',
+                    'defaults' => array(
+                        'controller' => 'SONUser\Controller\Index',
                         'action' => 'activate'
-                    ]
-                ]
-            ],
+                    )
+                )
+            ),
         ]
     ],
     'controllers' => [

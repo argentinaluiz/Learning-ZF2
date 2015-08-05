@@ -14,17 +14,15 @@ class IndexController extends AbstractActionController
         $form = new FormUser;
         $request = $this->getRequest();
 
-        if($request->isPost())
-        {
+        if($request->isPost()) {
             $form->setData($request->getPost());
-            if($form->isValid())
-            {
+            if($form->isValid()) {
                 $service = $this->getServiceLocator()->get('User\Service\User');
-                if($service->insert($request->getPost()->toArray()))
-                {
-                    $fm = $this->flashMessenger()
+
+                if($service->insert($request->getPost()->toArray())) {
+                    $messages = $this->flashMessenger()
                         ->setNamespace('User')
-                        ->addMessage("Usuário cadastrado com sucesso");
+                        ->addMessage("Usuário cadastrado com sucesso!!!");
                 }
 
                 return $this->redirect()->toRoute('user-register');

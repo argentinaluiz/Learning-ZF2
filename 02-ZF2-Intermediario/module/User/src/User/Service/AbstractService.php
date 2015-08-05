@@ -29,7 +29,7 @@ abstract class AbstractService
      * @param array $data
      * @return mixed
      */
-    public function insert(array $data)
+    public function insert(Array $data)
     {
         $entity = new $this->entity($data);
 

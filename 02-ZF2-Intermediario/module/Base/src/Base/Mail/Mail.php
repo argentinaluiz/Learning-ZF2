@@ -3,7 +3,7 @@
 namespace Base\Mail;
 
 use Zend\Mail\Message;
-use Zend\Mail\Transport\SmtpOptions as SmtpTransport;
+use Zend\Mail\Transport\Smtp as SmtpTransport;
 use Zend\View\Model\ViewModel;
 
 use Zend\Mime\Message as MimeMessage;
@@ -85,9 +85,9 @@ class Mail
      */
     public function renderView($page, array $data)
     {
-        $model = new ViewModel();
+        $model = new ViewModel;
         $model->setTemplate("mailer/{$page}.phtml");
-        $model->setOptions('has_parent', true);
+        $model->setOption('has_parent',true);
         $model->setVariables($data);
 
         return $this->view->render($model);
@@ -113,7 +113,7 @@ class Mail
         $this->message->addFrom($config['connection_config']['from'])
             ->addTo($this->to)
             ->setSubject($this->subject)
-            ->setBody($this->$body);
+            ->setBody($this->body);
 
         return $this;
     }

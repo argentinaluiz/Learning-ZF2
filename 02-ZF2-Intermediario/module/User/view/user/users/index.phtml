@@ -19,7 +19,8 @@
             <td><?= $entity->getName(); ?></td>
             <td><?= $entity->getEmail(); ?></td>
             <td>
-
+                <a href="<?= $this->url('user-admin/default',['controller' => 'users','action'=>'edit', 'id' => $entity->getId()]); ?>" title="Edição de Usuário" class="btn alert-info">Editar</a>
+                <a href="<?= $this->url('user-admin/default',['controller' => 'users','action'=>'delete', 'id' => $entity->getId()]); ?>" title="delete de Usuário" class="btn alert-danger">Delete</a>
             </td>
 
         </tr>

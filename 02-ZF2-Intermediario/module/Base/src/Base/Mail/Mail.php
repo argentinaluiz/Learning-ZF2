@@ -2,12 +2,13 @@
 
 namespace Base\Mail;
 
-use Zend\Mail\Message;
 use Zend\Mail\Transport\Smtp as SmtpTransport;
+use Zend\Mail\Message;
+
 use Zend\View\Model\ViewModel;
 
 use Zend\Mime\Message as MimeMessage;
-use Zend\Mime\Part  as MimePart;
+use Zend\Mime\Part as MimePart;
 
 
 /**

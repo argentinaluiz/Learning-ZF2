@@ -3,6 +3,7 @@
 namespace User\Service;
 
 use User\Service\AbstractService;
+
 use Doctrine\ORM\EntityManager;
 
 use Zend\Stdlib\Hydrator;
@@ -17,9 +18,6 @@ class User extends AbstractService
      */
     protected $transport;
 
-    /**
-     * @var
-     */
     protected $view;
 
     /**
@@ -41,13 +39,13 @@ class User extends AbstractService
      * @param array $data
      * @return mixed
      */
-    public function insert(array $data)
-    {
+    public function insert(array $data) {
         $entity = parent::insert($data);
 
-        $dataEmail = ['nome'=>$data['nome'], 'activationKey'=>$entity->getActivationKey()];
+        $dataEmail = array('nome'=>$data['nome'],'activationKey'=>$entity->getActivationKey());
 
-        if($entity) {
+        if($entity)
+        {
             $mail = new Mail($this->transport, $this->view, 'add-user');
             $mail->setSubject('Confirmação de cadastro')
                 ->setTo($data['email'])

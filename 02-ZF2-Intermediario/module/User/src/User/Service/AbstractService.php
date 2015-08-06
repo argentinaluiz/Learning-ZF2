@@ -3,7 +3,7 @@
 namespace User\Service;
 
 use Doctrine\ORM\EntityManager;
-use DoctrineModule\Stdlib\Hydrator;
+use Zend\Stdlib\Hydrator;
 
 abstract class AbstractService
 {
@@ -15,8 +15,9 @@ abstract class AbstractService
     protected $entity;
 
     /**
-     * AbstractService constructor.
-     * @param $em
+     * Construct
+     *
+     * @param EntityManager $em
      */
     public function __construct(EntityManager $em)
     {
@@ -29,13 +30,12 @@ abstract class AbstractService
      * @param array $data
      * @return mixed
      */
-    public function insert(Array $data)
+    public function insert(array $data)
     {
         $entity = new $this->entity($data);
 
         $this->em->persist($entity);
         $this->em->flush();
-
         return $entity;
     }
 

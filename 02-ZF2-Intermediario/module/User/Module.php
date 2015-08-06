@@ -38,7 +38,7 @@ class Module
     public function getServiceConfig()
     {
         return [
-            'factories' => [
+            'factories' => array(
                 'User\Mail\Transport' => function($sm) {
                     $config = $sm->get('Config');
 
@@ -48,12 +48,12 @@ class Module
 
                     return $transport;
                 },
-                'User\Service\User' => function ($sm) {
-                    return new Service\User($sm->get('Doctrine\ORM\EntityManager'),
+                'User\Service\User' => function($sm) {
+                    return new UserService($sm->get('Doctrine\ORM\EntityManager'),
                         $sm->get('User\Mail\Transport'),
                         $sm->get('View'));
                 }
-            ]
+            )
         ];
     }
 }

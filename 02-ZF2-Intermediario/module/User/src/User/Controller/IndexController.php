@@ -29,20 +29,25 @@ class IndexController extends AbstractActionController
                 $service = $this->getServiceLocator()->get('User\Service\User');
 
                 if($service->insert($request->getPost()->toArray())) {
-                    $ms = $this->flashMessenger()
-                        ->setNamespace('User')
-                        ->addMessage("Usuário cadastrado com sucesso!!!");
+                    $this->flashMessenger()->addSuccessMessage('Usuário cadastrado com sucesso! Eviamos uma ativação para seu email!!!');
+                } else {
+                    $this->flashMessenger()->addErrorMessage('Erro ao fazer o cadastro!!!');
                 }
 
-                return $this->redirect()->toRoute('user-register');
+                return $this->redirect()->toRoute('user-register', ['controller' => 'User\Controller\Index', ]);
             }
         }
 
-        $messages = $this->flashMessenger()
-            ->setNamespace('User')
-            ->getMessages();
+        if ($this->flashMessenger()->hasSuccessMessages()) {
+            return new ViewModel(['form' => $form, 'success' => $this->flashMessenger()->getSuccessMessages()]);
+        }
 
-        return new ViewModel(array('form'=>$form,'messages'=>$messages));
+        if ($this->flashMessenger()->hasErrorMessages()) {
+            return new ViewModel(['form' => $form, 'error' => $this->flashMessenger()->getErrorMessages()]);
+        }
+
+
+        return new ViewModel(['form'=>$form]);
     }
 
     public function activateAction()

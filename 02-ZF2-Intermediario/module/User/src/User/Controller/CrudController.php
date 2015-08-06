@@ -61,10 +61,23 @@ abstract class CrudController extends AbstractActionController
             if ($form->isValid()) {
 
                 $service = $this->getServiceLocator()->get($this->service);
-                $service->insert($request->getPost()->toArray());
+
+                if($service->insert($request->getPost()->toArray())) {
+                    $this->flashMessenger()->addSuccessMessage('Usuário cadastrado com sucesso! Eviamos uma ativação para seu email!!!');
+                } else {
+                    $this->flashMessenger()->addErrorMessage('Erro ao fazer o cadastro!!!');
+                }
 
                 return $this->redirect()->toRoute($this->route, ['controller' => $this->controller]);
             }
+        }
+
+        if ($this->flashMessenger()->hasSuccessMessages()) {
+            return new ViewModel(['form' => $form, 'success' => $this->flashMessenger()->getSuccessMessages()]);
+        }
+
+        if ($this->flashMessenger()->hasErrorMessages()) {
+            return new ViewModel(['form' => $form, 'error' => $this->flashMessenger()->getErrorMessages()]);
         }
 
         return new ViewModel(['form' => $form]);

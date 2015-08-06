@@ -7,6 +7,7 @@ return [
         'DoctrineDataFixtureModule',
         'Base',
         'User',
+        'Zf2Whoops',
     ],
     'module_listener_options' => [
         'module_paths' => [

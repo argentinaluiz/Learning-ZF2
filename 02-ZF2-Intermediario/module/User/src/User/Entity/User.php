@@ -172,6 +172,13 @@ class User
     }
 
     /**
+     * @return bool
+     */
+    public function getActive() {
+        return $this->active;
+    }
+
+    /**
      * @param $active
      * @return $this
      */

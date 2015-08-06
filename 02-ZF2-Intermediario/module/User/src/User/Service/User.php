@@ -45,7 +45,7 @@ class User extends AbstractService
     {
         $entity = parent::insert($data);
 
-        $dataEmail = array('name'=>$data['name'],'activationKey'=>$entity->getActivationKey());
+        $dataEmail = ['nome'=>$data['nome'], 'activationKey'=>$entity->getActivationKey()];
 
         if($entity) {
             $mail = new Mail($this->transport, $this->view, 'add-user');
@@ -59,6 +59,12 @@ class User extends AbstractService
         }
     }
 
+    /**
+     * User activation
+     *
+     * @param $key
+     * @return mixed
+     */
     public function activate($key)
     {
         $repository = $this->em->getRepository('User\Entity\User');
@@ -73,5 +79,26 @@ class User extends AbstractService
 
             return $user;
         }
+    }
+
+    /**
+     * User Update
+     *
+     * @param array $data
+     * @return bool|\Doctrine\Common\Proxy\Proxy|null|object
+     */
+    public function update(array $data)
+    {
+        $entity = $this->em->getReference($this->entity, $data['id']);
+
+        if (empty($data['password']))
+            unset($data['password']);
+
+        (new Hydrator\ClassMethods())->hydrate($data, $entity);
+
+        $this->em->persist($entity);
+        $this->em->flush();
+
+        return $entity;
     }
 }

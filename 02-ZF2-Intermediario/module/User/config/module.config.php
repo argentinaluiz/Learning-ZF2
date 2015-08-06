@@ -15,21 +15,66 @@ return [
                     ]
                 ]
             ],
-            'user-activate' => array(
+            'user-activate' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/register/activate[/:key]',
-                    'defaults' => array(
-                        'controller' => 'SONUser\Controller\Index',
+                    'defaults' => [
+                        'controller' => 'User\Controller\Index',
                         'action' => 'activate'
-                    )
-                )
-            ),
-        ]
+                    ]
+                ]
+            ],
+            'user-admin' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/admin',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'User\Controller',
+                        'controller' => 'Users',
+                        'action' => 'index'
+                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'default' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/[:controller[/:action[/:id]]]',
+                            'constraints' => [
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '\d+'
+                            ],
+                            'defaults' => [
+                                '__NAMESPACE__' => 'User\Controller',
+                                'controller' => 'users'
+                            ]
+                        ]
+                    ],
+                    'paginator' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/[:controller[/page/:page]]',
+                            'constraints' => [
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'page' => '\d+'
+                            ],
+                            'defaults' => [
+                                '__NAMESPACE__' => 'User\Controller',
+                                'controller' => 'users'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ],
     ],
     'controllers' => [
         'invokables' => [
             'User\Controller\Index' => 'User\Controller\IndexController',
+            'User\Controller\Users' => 'User\Controller\UsersController',
         ]
     ],
     'view_manager' => [

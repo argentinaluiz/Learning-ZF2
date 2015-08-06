@@ -10,6 +10,8 @@ use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
 
+use DoctrineModule\Validator\ObjectExists;
+
 /**
  * Class CrudController
  * @package User\Controller
@@ -61,6 +63,20 @@ abstract class CrudController extends AbstractActionController
             if ($form->isValid()) {
 
                 $service = $this->getServiceLocator()->get($this->service);
+
+
+                $validator = new ObjectExists(array(
+                    'object_repository' => $this->getEm()->getRepository($this->entity),
+                    'fields' => array('email')
+                ));
+
+                if ($validator->isValid(array('email' => $request->getPost()->toArray()))) {
+                    $this->flashMessenger()->addErrorMessage('Email Já cadastrado em nosso sistemas!');
+                    if ($this->flashMessenger()->hasErrorMessages()) {
+                        return new ViewModel(['form' => $form, 'error' => $this->flashMessenger()->getErrorMessages()]);
+                    }
+                    return new ViewModel(['form' => $form, 'error' => $this->flashMessenger()->getErrorMessages()]);
+                }
 
                 if($service->insert($request->getPost()->toArray())) {
                     $this->flashMessenger()->addSuccessMessage('Usuário cadastrado com sucesso! Eviamos uma ativação para seu email!!!');

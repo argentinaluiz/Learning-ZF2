@@ -2,6 +2,15 @@
 
 <a href="<?= $this->url('user-admin/default',['controller'=>'users','action'=>'index']); ?>" title="Usuário" class="btn btn alert-warning">Voltar | Usuários</a>
 
+<?php
+if ($this->success) {
+    echo '<div class="alert alert-success">' . $this->success[0] . '<button type="button" class="close" data-dismiss="alert">×</button></div>';
+}
+if ($this->error) {
+    echo '<div class="alert alert-danger">' . $this->error[0] . '<button type="button" class="close" data-dismiss="alert">×</button></div>';
+}
+?>
+
 <div class="row">
     <div class="col-lg-6">
         <?php

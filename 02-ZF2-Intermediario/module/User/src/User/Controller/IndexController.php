@@ -5,7 +5,11 @@ namespace User\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use DoctrineModule\Validator\ObjectExists;
+
 use User\Form\User as FormUser;
+
+use Doctrine\ORM\EntityManager;
 
 /**
  * Class IndexController
@@ -13,6 +17,11 @@ use User\Form\User as FormUser;
  */
 class IndexController extends AbstractActionController
 {
+    /**
+     * @var EntityManager
+     */
+    protected $em;
+
     /**
      * Create new user
      *
@@ -27,6 +36,19 @@ class IndexController extends AbstractActionController
             $form->setData($request->getPost());
             if($form->isValid()) {
                 $service = $this->getServiceLocator()->get('User\Service\User');
+
+                $validator = new ObjectExists(array(
+                    'object_repository' => $this->getEm()->getRepository('User\Entity\User'),
+                    'fields' => array('email')
+                ));
+
+                if ($validator->isValid(array('email' => $request->getPost()->toArray()))) {
+                    $this->flashMessenger()->addErrorMessage('Email Já cadastrado em nosso sistemas!');
+                    if ($this->flashMessenger()->hasErrorMessages()) {
+                        return new ViewModel(['form' => $form, 'error' => $this->flashMessenger()->getErrorMessages()]);
+                    }
+                    return new ViewModel(['form' => $form, 'error' => $this->flashMessenger()->getErrorMessages()]);
+                }
 
                 if($service->insert($request->getPost()->toArray())) {
                     $this->flashMessenger()->addSuccessMessage('Usuário cadastrado com sucesso! Eviamos uma ativação para seu email!!!');
@@ -61,5 +83,16 @@ class IndexController extends AbstractActionController
         if ($result)
             return new ViewModel(['user' => $result]);
         return new ViewModel();
+    }
+
+    /**
+     * @return EntityManager
+     */
+    protected function getEm()
+    {
+        if (null === $this->em)
+            $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+
+        return $this->em;
     }
 }

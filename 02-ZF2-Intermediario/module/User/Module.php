@@ -2,11 +2,15 @@
 
 namespace User;
 
+use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
 use Zend\Mail\Transport\Smtp as SmtpTransport;
 use Zend\Mail\Transport\SmtpOptions;
+
+use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\Storage\Session as SessionStorage;
 
 use User\Service\User as UserService;
 use User\Auth\Adapter as AuthAdapter;
@@ -34,6 +38,26 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function init(ModuleManager $moduleManager)
+    {
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+
+        $sharedEvents->attach('Zend\Mvc\Controller\AbstractActionController', MvcEvent::EVENT_DISPATCH, [$this, 'validAuth'], 100);
+    }
+
+    public function validAuth($e)
+    {
+        $auth = new AuthenticationService();
+        $auth->setStorage(new SessionStorage("User"));
+
+        $controller = $e->getTarget();
+        $matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
+
+        if (!$auth->hasIdentity() && ($matchedRoute == 'user-admin' || $matchedRoute == 'user-admin/paginator')) {
+            return $controller->redirect()->toRoute('user-auth');
+        }
     }
 
     public function getServiceConfig()

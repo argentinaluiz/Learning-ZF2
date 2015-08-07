@@ -1,7 +1,7 @@
-Acl\Entity\Privileges:
+Acl\Entity\Privilege:
     type: entity
     table: acl_privileges
-    repositoryClass: Acl\Entity\PrivilegesRepository
+    repositoryClass: Acl\Entity\PrivilegeRepository
     indexes:
         fk_acl_privileges_acl_roles1:
             columns:

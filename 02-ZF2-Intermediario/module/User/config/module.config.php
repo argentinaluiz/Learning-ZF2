@@ -100,6 +100,14 @@ return [
             'User\Controller\Auth' => 'User\Controller\AuthController',
         ]
     ],
+    'service_manager' => [
+        'aliases' => [
+            'Zend\Authentication\AuthenticationService' => 'authService',
+        ],
+        'invokables' => [
+            'authService' => 'Zend\Authentication\AuthenticationService',
+        ],
+    ],
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions' => true,

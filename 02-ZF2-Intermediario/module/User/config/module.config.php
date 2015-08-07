@@ -25,6 +25,28 @@ return [
                     ]
                 ]
             ],
+            'user-auth' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route'=>'/auth',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'User\Controller',
+                        'controller' => 'Auth',
+                        'action' => 'index'
+                    ]
+                ]
+            ],
+            'user-logout' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route'=>'/auth/logout',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'User\Controller',
+                        'controller' => 'Auth',
+                        'action' => 'logout'
+                    ]
+                ]
+            ],
             'user-admin' => [
                 'type' => 'Literal',
                 'options' => [
@@ -75,6 +97,7 @@ return [
         'invokables' => [
             'User\Controller\Index' => 'User\Controller\IndexController',
             'User\Controller\Users' => 'User\Controller\UsersController',
+            'User\Controller\Auth' => 'User\Controller\AuthController',
         ]
     ],
     'view_manager' => [

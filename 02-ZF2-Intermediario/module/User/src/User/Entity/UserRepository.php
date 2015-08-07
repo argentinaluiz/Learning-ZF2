@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
 {
-    public function findByEmailAndPassword($email, $password)
+    public function findOneByEmailAndPassword($email, $password)
     {
         $user = $this->findOneByEmail($email);
 

@@ -1,0 +1,49 @@
+Acl\Entity\Role:
+    type: entity
+    table: acl_roles
+    repositoryClass: Acl\Entity\RoleRepository
+    indexes:
+        fk_acl_roles_acl_roles:
+            columns:
+                - parent_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        isAdmin:
+            type: boolean
+            nullable: true
+            column: is_admin
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            column: updated_at
+    oneToOne:
+        parent:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
+        prePersist: [ setUpdatedAt ]

@@ -3,6 +3,7 @@
 namespace Acl;
 
 use Zend\ModuleManager\ModuleManager;
+use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
 class Module

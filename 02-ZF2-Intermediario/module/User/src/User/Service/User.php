@@ -42,7 +42,7 @@ class User extends AbstractService
     public function insert(array $data) {
         $entity = parent::insert($data);
 
-        $dataEmail = array('nome'=>$data['nome'],'activationKey'=>$entity->getActivationKey());
+        $dataEmail = array('name'=>$data['name'],'activationKey'=>$entity->getActivationKey());
 
         if($entity)
         {

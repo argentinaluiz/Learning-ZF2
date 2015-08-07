@@ -4,7 +4,11 @@ namespace Acl\Entity;
 
 use Zend\Stdlib\Hydrator;
 
-class Resource
+/**
+ * Class Resource
+ * @package Acl\Entity
+ */
+class Resource extends Timestampable
 {
     /**
      * @var Integer
@@ -17,26 +21,14 @@ class Resource
     protected $name;
 
     /**
-     * @var \DateTime
-     */
-    protected $createdAt;
-
-    /**
-     * @var \DateTime
-     */
-    protected $updatedAt;
-
-    /**
      * Construct
      *
      * @param array $options
      */
     public function __construct(array $options = [])
     {
+        parent::__construct();
         (new Hydrator\ClassMethods())->hydrate($options, $this);
-
-        $this->updatedAt = new \DateTime('now');
-        $this->createdAt = new \DateTime('now');
     }
 
     /**
@@ -68,48 +60,6 @@ class Resource
     public function setName($name)
     {
         $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * Get CreatedAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set CreatedAt
-     *
-     * @return $this
-     */
-    public function setCreatedAt()
-    {
-        $this->createdAt = new \DateTime('now');
-        return $this;
-    }
-
-    /**
-     * Get UpdatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set UpdatedAt
-     *
-     * @return $this
-     */
-    public function setUpdatedAt()
-    {
-        $this->updatedAt = new \DateTime('now');
         return $this;
     }
 

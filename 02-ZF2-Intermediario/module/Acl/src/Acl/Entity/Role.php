@@ -4,7 +4,11 @@ namespace Acl\Entity;
 
 use Zend\Stdlib\Hydrator;
 
-class Role
+/**
+ * Class Role
+ * @package Acl\Entity
+ */
+class Role extends Timestampable
 {
     /**
      * @var Integer
@@ -21,17 +25,6 @@ class Role
      */
     protected $isAdmin;
 
-    /**
-     * @var \DateTime
-     */
-    protected $createdAt;
-
-    /**
-     * @var \DateTime
-     */
-    protected $updatedAt;
-
-
     protected $parent;
 
     /**
@@ -41,10 +34,8 @@ class Role
      */
     public function __construct(array $options = [])
     {
+        parent::__construct();
         (new Hydrator\ClassMethods())->hydrate($options, $this);
-
-        $this->updatedAt = new \DateTime('now');
-        $this->createdAt = new \DateTime('now');
     }
 
     /**
@@ -92,44 +83,6 @@ class Role
     public function setIsAdmin($isAdmin)
     {
         $this->isAdmin = $isAdmin;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set CreatedAt
-     *
-     * @return $this
-     */
-    public function setCreatedAt()
-    {
-        $this->createdAt = new \DateTime('now');
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set UpdatedAt
-     *
-     * @return $this
-     */
-    public function setUpdatedAt()
-    {
-        $this->updatedAt = new \DateTime('now');
         return $this;
     }
 

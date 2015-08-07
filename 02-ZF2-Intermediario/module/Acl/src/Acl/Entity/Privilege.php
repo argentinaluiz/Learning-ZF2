@@ -2,13 +2,14 @@
 
 namespace User\Entity;
 
+use Acl\Entity\Timestampable;
 use Zend\Stdlib\Hydrator;
 
 /**
  * Class Privilege
  * @package User\Entity
  */
-class Privilege
+class Privilege extends Timestampable
 {
     /**
      * @var Integer
@@ -19,16 +20,6 @@ class Privilege
      * @var String
      */
     protected $name;
-
-    /**
-     * @var \DateTime
-     */
-    protected $createdAt;
-
-    /**
-     * @var \DateTime
-     */
-    protected $updatedAt;
 
     protected $role;
 
@@ -41,10 +32,8 @@ class Privilege
      */
     public function __construct(array $options = [])
     {
+        parent::__construct();
         (new Hydrator\ClassMethods())->hydrate($options, $this);
-
-        $this->updatedAt = new \DateTime('now');
-        $this->createdAt = new \DateTime('now');
     }
 
     /**
@@ -76,48 +65,6 @@ class Privilege
     public function setName($name)
     {
         $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * Get CreatedAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set CreatedAt
-     *
-     * @return $this
-     */
-    public function setCreatedAt()
-    {
-        $this->createdAt = new \DateTime('now');
-        return $this;
-    }
-
-    /**
-     * Get UpdatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set UpdatedAt
-     *
-     * @return $this
-     */
-    public function setUpdatedAt()
-    {
-        $this->updatedAt = new \DateTime('now');
         return $this;
     }
 

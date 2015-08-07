@@ -1,0 +1,58 @@
+Acl\Entity\Privileges:
+    type: entity
+    table: acl_privileges
+    repositoryClass: Acl\Entity\PrivilegesRepository
+    indexes:
+        fk_acl_privileges_acl_roles1:
+            columns:
+                - role_id
+        fk_acl_privileges_acl_resources1:
+            columns:
+                - resource_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            column: updated_at
+    oneToOne:
+        resource:
+            targetEntity: Resources
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                resource_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        role:
+            targetEntity: Roles
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                role_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
+        prePersist: [ setUpdatedAt ]

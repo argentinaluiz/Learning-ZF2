@@ -65,12 +65,12 @@ abstract class CrudController extends AbstractActionController
                 $service = $this->getServiceLocator()->get($this->service);
 
 
-                $validator = new ObjectExists(array(
+                $validator = new ObjectExists([
                     'object_repository' => $this->getEm()->getRepository($this->entity),
-                    'fields' => array('email')
-                ));
+                    'fields' => ['email']
+                ]);
 
-                if ($validator->isValid(array('email' => $request->getPost()->toArray()))) {
+                if ($validator->isValid(['email' => $request->getPost()->toArray()])) {
                     $this->flashMessenger()->addErrorMessage('Email Já cadastrado em nosso sistemas!');
                     if ($this->flashMessenger()->hasErrorMessages()) {
                         return new ViewModel(['form' => $form, 'error' => $this->flashMessenger()->getErrorMessages()]);

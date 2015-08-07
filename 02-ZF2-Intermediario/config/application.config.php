@@ -7,6 +7,7 @@ return [
         'DoctrineDataFixtureModule',
         'Base',
         'User',
+        'Acl',
         'Zf2Whoops',
     ],
     'module_listener_options' => [

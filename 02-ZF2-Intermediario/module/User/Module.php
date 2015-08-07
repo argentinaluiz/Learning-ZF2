@@ -9,6 +9,7 @@ use Zend\Mail\Transport\Smtp as SmtpTransport;
 use Zend\Mail\Transport\SmtpOptions;
 
 use User\Service\User as UserService;
+use User\Auth\Adapter as AuthAdapter;
 
 class Module
 {
@@ -52,6 +53,9 @@ class Module
                     return new UserService($sm->get('Doctrine\ORM\EntityManager'),
                         $sm->get('User\Mail\Transport'),
                         $sm->get('View'));
+                },
+                'User\Auth\Adapter' => function($sm) {
+                    return new AuthAdapter($sm->get('Doctrine\ORM\EntityManager'));
                 }
             )
         ];

@@ -1,4 +1,4 @@
-Acl\Entity\Resources:
+Acl\Entity\Resource:
     type: entity
     table: acl_resources
     repositoryClass: Acl\Entity\ResourceRepository
@@ -26,5 +26,5 @@ Acl\Entity\Resources:
             type: datetime
             nullable: false
             column: updated_at
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
         prePersist: [ setUpdatedAt ]

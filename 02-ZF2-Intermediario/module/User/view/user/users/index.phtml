@@ -9,6 +9,7 @@
 <table class="table table-condensed">
     <tr>
         <th>ID</th>
+        <th>Gravatar</th>
         <th>Nome</th>
         <th>Email</th>
         <th>Ação</th>
@@ -16,6 +17,7 @@
     <?php foreach ($this->data as $entity) : ?>
         <tr>
             <td><?= $entity->getId(); ?></td>
+            <td><?= $this->gravatar($entity->getEmail())->getImgTag();?></td>
             <td><?= $entity->getName(); ?></td>
             <td><?= $entity->getEmail(); ?></td>
             <td>

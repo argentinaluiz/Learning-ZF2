@@ -8,6 +8,6 @@ class RolesController extends CrudController
 {
     public function __construct()
     {
-        $this->service = 'Acl\Service\Role';
+        $this->entity = 'Acl\Entity\Role';
     }
 }

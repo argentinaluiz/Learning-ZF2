@@ -61,6 +61,20 @@ class Module
                 },
                 'Acl\Service\Privilege' => function($sm) {
                     return new Service\Privilege($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'Acl\Permissions\Acl' => function($sm){
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+
+                    $repoRole = $em->getRepository('Acl\Entity\Role');
+                    $roles = $repoRole->findAll();
+
+                    $repoResource = $em->getRepository('Acl\Entity\Resource');
+                    $resources = $repoResource->findAll();
+
+                    $repoPrivilege = $em->getRepository('Acl\Entity\Privilege');
+                    $privileges = $repoPrivilege->findAll();
+
+                    return new Permissions\Acl($roles,$resources,$privileges);
                 }
             ],
         ];

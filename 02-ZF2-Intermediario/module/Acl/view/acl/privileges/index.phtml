@@ -1,0 +1,36 @@
+<h1>Roles</h1>
+
+<?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator') ;?>
+
+
+<a href="<?= $this->url('acl-admin/default',['controller' => 'privileges', 'action'=>'new']); ?>" title="Novo Roles" class="btn alert-success">Novo</a>
+<br>
+<br>
+<table class="table table-condensed">
+    <tr>
+        <th>ID</th>
+        <th>Role</th>
+        <th>Nome</th>
+        <th>Resource</th>
+        <th>Ação</th>
+    </tr>
+    <?php foreach ($this->data as $entity) : ?>
+        <tr>
+            <td><?= $entity->getId(); ?></td>
+            <td><?= $entity->getRole()->getName(); ?></td>
+            <td><?= $entity->getName(); ?></td>
+            <td><?= $entity->getResource()->getName(); ?></td>
+            <td>
+                <a href="<?= $this->url('acl-admin/default',['controller' => 'privileges','action'=>'edit', 'id' => $entity->getId()]); ?>" title="Edição de Role" class="btn alert-info">Editar</a>
+                <a href="<?= $this->url('acl-admin/default',['privileges' => 'privileges','action'=>'delete', 'id' => $entity->getId()]); ?>" title="delete Role" class="btn alert-danger">Delete</a>
+            </td>
+
+        </tr>
+    <?php endforeach; ?>
+
+
+</table>
+
+<div class="">
+    <?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator') ;?>
+</div>

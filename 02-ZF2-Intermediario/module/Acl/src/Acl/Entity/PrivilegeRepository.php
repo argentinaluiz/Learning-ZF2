@@ -5,10 +5,10 @@ namespace Acl\Entity;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class PrivilegesRepository
+ * Class PrivilegeRepository
  * @package Acl\Entity
  */
-class PrivilegesRepository extends EntityRepository
+class PrivilegeRepository extends EntityRepository
 {
 
 }

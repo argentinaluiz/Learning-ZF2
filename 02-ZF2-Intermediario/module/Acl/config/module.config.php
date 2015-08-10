@@ -54,6 +54,7 @@ return [
         'invokables' => [
             'Acl\Controller\Roles' => 'Acl\Controller\RolesController',
             'Acl\Controller\Resources' => 'Acl\Controller\ResourcesController',
+            'Acl\Controller\Privileges' => 'Acl\Controller\PrivilegesController',
         ]
     ],
     'service_manager' => [

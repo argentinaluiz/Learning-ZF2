@@ -43,11 +43,24 @@ class Module
 
                     return new FormRole('role', $parent);
                 },
+                'Acl\Form\Privilege' => function($sm){
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $repoRoles = $em->getRepository('Acl\Entity\Role');
+                    $roles = $repoRoles->fetchParent();
+
+                    $repoResources = $em->getRepository('Acl\Entity\Resource');
+                    $resources = $repoResources->fetchPairs();
+
+                    return new Form\Privilege("privilege", $roles, $resources);
+                },
                 'Acl\Service\Role' => function($sm) {
                     return new Service\Role($sm->get('Doctrine\ORM\EntityManager'));
                 },
                 'Acl\Service\Resource' => function($sm) {
                     return new Service\Resource($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'Acl\Service\Privilege' => function($sm) {
+                    return new Service\Privilege($sm->get('Doctrine\ORM\EntityManager'));
                 }
             ],
         ];

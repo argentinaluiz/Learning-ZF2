@@ -45,6 +45,9 @@ class Module
                 },
                 'Acl\Service\Role' => function($sm) {
                     return new Service\Role($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'Acl\Service\Resource' => function($sm) {
+                    return new Service\Resource($sm->get('Doctrine\ORM\EntityManager'));
                 }
             ],
         ];

@@ -5,6 +5,7 @@ namespace Acl;
 use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Acl\Service\Role as RoleService;
 
 class Module
 {
@@ -34,7 +35,11 @@ class Module
     public function getServiceConfig()
     {
         return [
-            'factories' => [],
+            'factories' => [
+                'Acl\Service\Role' => function($sm) {
+                    return new Service\Resource($sm->get('Doctrine\ORM\EntityManager'));
+                }
+            ],
         ];
     }
 }

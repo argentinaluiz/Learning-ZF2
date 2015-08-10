@@ -38,7 +38,20 @@ class LoadRole extends AbstractFixture
         $role->setName('Admin')
             ->setIsAdmin(true);
         $manager->persist($role);
-        
+
         $manager->flush();
     }
+
+    /*
+     * Bypass Doctrine Candido
+     *
+     * Caminho do arquivo para alteraçao
+     * vendor/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/PRMPurger.php
+     *
+     * Aproximadamente linha 136
+     *
+     * $this->em->getConnection()->executeUpdate("SET foreign_key_checks = 0;");
+     * $this->em->getConnection()->executeUpdate($platform->getTruncateTableSQL($tbl, true));
+     * $this->em->getConnection()->executeUpdate("SET foreign_key_checks = 1;");
+     */
 }

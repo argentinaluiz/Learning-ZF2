@@ -52,7 +52,7 @@ return [
     ],
     'controllers' => [
         'invokables' => [
-            'Acl\Controller\Index' => 'Acl\Controller\IndexController',
+            'Acl\Controller\Roles' => 'Acl\Controller\RolesController',
         ]
     ],
     'service_manager' => [

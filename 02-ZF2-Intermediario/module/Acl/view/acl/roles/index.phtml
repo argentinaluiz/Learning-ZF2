@@ -3,7 +3,7 @@
 <?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator') ;?>
 
 
-<a href="<?= $this->url('user-admin/default',['controller' => 'roles', 'action'=>'new']); ?>" title="Novo Roles" class="btn alert-success">Novo</a>
+<a href="<?= $this->url('acl-admin/default',['controller' => 'roles', 'action'=>'new']); ?>" title="Novo Roles" class="btn alert-success">Novo</a>
 <br>
 <br>
 <table class="table table-condensed">
@@ -21,8 +21,8 @@
             <td><?= $entity->getParent() ? $entity->getParent() : '###'; ?></td>
             <td><?= $entity->getIsAdmin()? 'Sim' : 'Não'; ?></td>
             <td>
-                <a href="<?= $this->url('user-admin/default',['controller' => 'roles','action'=>'edit', 'id' => $entity->getId()]); ?>" title="Edição de Role" class="btn alert-info">Editar</a>
-                <a href="<?= $this->url('user-admin/default',['controller' => 'roles','action'=>'delete', 'id' => $entity->getId()]); ?>" title="delete Role" class="btn alert-danger">Delete</a>
+                <a href="<?= $this->url('acl-admin/default',['controller' => 'roles','action'=>'edit', 'id' => $entity->getId()]); ?>" title="Edição de Role" class="btn alert-info">Editar</a>
+                <a href="<?= $this->url('acl-admin/default',['controller' => 'roles','action'=>'delete', 'id' => $entity->getId()]); ?>" title="delete Role" class="btn alert-danger">Delete</a>
             </td>
 
         </tr>

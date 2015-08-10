@@ -1,6 +1,6 @@
 <?php
 
-namespace User\Form;
+namespace Acl\Form;
 
 use Zend\Form\Form,
     Zend\Form\Element\Select;
@@ -18,10 +18,21 @@ class Role extends Form
         $id = new \Zend\Form\Element\Hidden('id');
         $this->add($id);
 
-        $nome = new \Zend\Form\Element\Text("name");
-        $nome->setLabel("Nome: ")
-            ->setAttribute('placeholder', "Entre com o nome");
-        $this->add($nome);
+        $this->add([
+            'name' => 'name',
+            'options' => [
+                'type' => 'text',
+                'label' => 'Nome: ',
+                'label_attributes' => [
+                    'class'  => 'control-label'
+                ],
+            ],
+            'attributes' => [
+                'id' => 'name',
+                'placeholder' => 'Digite seu Usuário',
+                'class' => 'form-control'
+            ]
+        ]);
 
         $allParent = array_merge(array(0=>'Nenhum'),$this->parent);
         $parent = new Select();
@@ -33,14 +44,14 @@ class Role extends Form
         $isAdmin = new \Zend\Form\Element\Checkbox("isAdmin");
         $isAdmin->setLabel("Admin?: ");
         $this->add($isAdmin);
-
-        $this->add(array(
+        
+        $this->add([
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
-            'attributes' => array(
+            'attributes' => [
                 'value' => 'Salvar',
-                'class' => 'btn-success'
-            )
-        ));
+                'class' => 'btn alert-success'
+            ]
+        ]);
     }
 }

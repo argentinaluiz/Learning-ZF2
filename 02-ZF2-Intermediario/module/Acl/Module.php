@@ -5,7 +5,7 @@ namespace Acl;
 use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Acl\Service\Role as RoleService;
+use Acl\Form\Role as FormRole;
 
 class Module
 {
@@ -36,8 +36,15 @@ class Module
     {
         return [
             'factories' => [
+                'Acl\Form\Role' => function($sm) {
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $repository = $em->getRepository('Acl\Entity\Role');
+                    $parent = $repository->fetchParent();
+
+                    return new FormRole('role', $parent);
+                },
                 'Acl\Service\Role' => function($sm) {
-                    return new Service\Resource($sm->get('Doctrine\ORM\EntityManager'));
+                    return new Service\Role($sm->get('Doctrine\ORM\EntityManager'));
                 }
             ],
         ];

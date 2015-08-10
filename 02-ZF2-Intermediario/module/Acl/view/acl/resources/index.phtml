@@ -1,0 +1,32 @@
+<h1>Resources</h1>
+
+<?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator') ;?>
+
+
+<a href="<?= $this->url('acl-admin/default',['controller' => 'resources', 'action'=>'new']); ?>" title="Novo Resurces" class="btn alert-success">Novo</a>
+<br>
+<br>
+<table class="table table-condensed">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ação</th>
+    </tr>
+    <?php foreach ($this->data as $entity) : ?>
+        <tr>
+            <td><?= $entity->getId(); ?></td>
+            <td><?= $entity->getName(); ?></td>
+            <td>
+                <a href="<?= $this->url('acl-admin/default',['controller' => 'resources','action'=>'edit', 'id' => $entity->getId()]); ?>" title="Edição de Resources" class="btn alert-info">Editar</a>
+                <a href="<?= $this->url('acl-admin/default',['controller' => 'resources','action'=>'delete', 'id' => $entity->getId()]); ?>" title="delete Resources" class="btn alert-danger">Delete</a>
+            </td>
+
+        </tr>
+    <?php endforeach; ?>
+
+
+</table>
+
+<div class="">
+    <?= $this->paginationControl($this->data, 'Sliding', 'partials/paginator') ;?>
+</div>

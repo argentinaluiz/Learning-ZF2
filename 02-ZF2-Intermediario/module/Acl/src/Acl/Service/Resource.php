@@ -5,7 +5,7 @@ namespace Acl\Service;
 use Base\Service\AbstractService;
 use Doctrine\ORM\EntityManager;
 
-class Role extends AbstractService
+class Resource extends AbstractService
 {
     public function __construct(EntityManager $em)
     {

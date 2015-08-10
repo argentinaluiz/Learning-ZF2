@@ -1,0 +1,35 @@
+<h1>Editar Resources</h1>
+
+<a href="<?= $this->url('acl-admin/default',['controller'=>'resources','action'=>'index']); ?>" title="Resources" class="btn btn alert-warning">Voltar | Resource</a>
+
+<?php
+if ($this->success) {
+    echo '<div class="alert alert-success">' . $this->success[0] . '<button type="button" class="close" data-dismiss="alert">×</button></div>';
+}
+if ($this->error) {
+    echo '<div class="alert alert-danger">' . $this->error[0] . '<button type="button" class="close" data-dismiss="alert">×</button></div>';
+//    echo $this->flashMessenger()->render('error', array('alert', 'alert-danger'));
+}
+?>
+
+<div class="row">
+    <div class="col-lg-6">
+        <?php
+        $form = $this->form;
+        $form->setAttribute('Action', $this->url('acl-admin/default', ['controller' => 'resources', 'action' => 'edit']));
+        $form->prepare();
+        ?>
+        <?= $this->form()->openTag($form);?>
+        <?= $this->formHidden($form->get('id'));?>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <?=  $this->formRow($form->get('name'));?>
+            </div>
+        </div>
+
+        <?=  $this->formSubmit($form->get('submit'));?>
+
+        <?php $this->form()->closeTag();?>
+
+    </div>
+</div>

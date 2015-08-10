@@ -46,4 +46,4 @@ Acl\Entity\Role:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }
-        prePersist: [ setUpdatedAt ]
+    prePersist: [ setUpdatedAt ]

@@ -1,8 +1,7 @@
 <?php
 
-namespace User\Entity;
+namespace Acl\Entity;
 
-use Acl\Entity\Timestampable;
 use Zend\Stdlib\Hydrator;
 
 /**

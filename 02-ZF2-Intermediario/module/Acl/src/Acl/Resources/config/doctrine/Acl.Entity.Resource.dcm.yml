@@ -26,5 +26,5 @@ Acl\Entity\Resource:
             type: datetime
             nullable: false
             column: updated_at
-    lifecycleCallbacks:
-        prePersist: [ setUpdatedAt ]
+    lifecycleCallbacks: { }
+    prePersist: [ setUpdatedAt ]

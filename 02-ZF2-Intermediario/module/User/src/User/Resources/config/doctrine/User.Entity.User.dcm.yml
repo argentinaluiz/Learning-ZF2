@@ -59,4 +59,4 @@ User\Entity\User:
             nullable: false
             column: created_at
     lifecycleCallbacks:
-        prePersist: [ setUpdatedAt ]
+    prePersist: [ setUpdatedAt ]

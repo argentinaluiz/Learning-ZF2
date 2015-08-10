@@ -35,7 +35,7 @@ Acl\Entity\Privilege:
             column: updated_at
     oneToOne:
         resource:
-            targetEntity: Resources
+            targetEntity: Resource
             cascade: {  }
             fetch: LAZY
             mappedBy: null
@@ -45,7 +45,7 @@ Acl\Entity\Privilege:
                     referencedColumnName: id
             orphanRemoval: false
         role:
-            targetEntity: Roles
+            targetEntity: Role
             cascade: {  }
             fetch: LAZY
             mappedBy: null
@@ -54,5 +54,5 @@ Acl\Entity\Privilege:
                 role_id:
                     referencedColumnName: id
             orphanRemoval: false
-    lifecycleCallbacks: {  }
-        prePersist: [ setUpdatedAt ]
+    lifecycleCallbacks: { }
+    prePersist: [ setUpdatedAt ]

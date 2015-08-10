@@ -5,9 +5,11 @@ namespace Acl\Fixture;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
 use Acl\Entity\Role;
 
-class LoadRole extends AbstractFixture
+class LoadRole extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * Load data fixtures with the passed EntityManager
@@ -54,4 +56,13 @@ class LoadRole extends AbstractFixture
      * $this->em->getConnection()->executeUpdate($platform->getTruncateTableSQL($tbl, true));
      * $this->em->getConnection()->executeUpdate("SET foreign_key_checks = 1;");
      */
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    function getOrder()
+    {
+        return 1;
+    }
 }

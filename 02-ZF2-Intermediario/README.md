@@ -15,3 +15,35 @@
 > - $ php vendor/bin/doctrine-module data-fixture:import --purge-with-truncate
 
 > - $ php -S 127.0.0.1:8080 -t public/
+
+>- *RestFull*
+
+> - Listar
+
+GET: http://127.0.0.1:8080/api/user
+
+GET: http://127.0.0.1:8080/api/user/7
+
+> - Criar
+
+POST - http://127.0.0.1:8080/api/user
+
+key: name 	value: ****
+
+key: email 	value: ****
+
+Key: password	value: ****
+
+> - Atualizar
+
+PUT - http://127.0.0.1:8080/api/user/7
+
+key: name 	value: ****
+
+key: email 	value: ****
+
+Key: password	value: ****
+
+> - Deletar
+
+DELETE - http://127.0.0.1:8080/api/user/7

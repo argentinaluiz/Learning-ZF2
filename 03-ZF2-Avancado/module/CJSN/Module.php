@@ -37,14 +37,18 @@ class Module
             'factories' => [
                 'Cache' => function($sm) {
                     // Trabalhando com APC
+
+                    $config = $sm->get('Config');
                         $cache = StorageFactory::factory([
                             'adapter' => [
-                                'name'    => 'apc',
-                                'options' => ['ttl' => 10],
+                                'name'    => $config['cache']['adapter'],
+                                'options' => [
+                                    'ttl' => $config['cache']['ttl']
+                                ],
                             ],
                             'plugins' => [
                                 'Serializer',
-                                'exception_handler' => ['throw_exceptions' => true],// em produção false
+                                'exception_handler' => ['throw_exceptions' => $config['cache']['throw_exceptions']],
                             ],
                         ]);
 

@@ -36,17 +36,40 @@ class Module
         return [
             'factories' => [
                 'Cache' => function($sm) {
-                    $cache = StorageFactory::factory([
+                    // Trabalhando com APC
+                        $cache = StorageFactory::factory([
+                            'adapter' => [
+                                'name'    => 'apc',
+                                'options' => ['ttl' => 10],
+                            ],
+                            'plugins' => [
+                                'Serializer',
+                                'exception_handler' => ['throw_exceptions' => true],// em produção false
+                            ],
+                        ]);
+
+                        return $cache;
+
+                    /* Trabalhando com memcached
+
+                    $factory = [
                         'adapter' => [
-                            'name'    => 'apc',
-                            'options' => ['ttl' => 3600],
+                            'name'    => 'Memcached',
+                            'options' => [
+                                'ttl' => 10,
+                                'servers' => [
+                                    ['127.0.0.1', 11211]
+                                ]
+                            ],
                         ],
                         'plugins' => [
-                            'exception_handler' => ['throw_exceptions' => false],
+                            'Serializer',
+                            'exception_handler' => ['throw_exceptions' => true],// em produção false
                         ],
-                    ]);
-
+                    ];
+                    $cache = StorageFactory::factory($factory);
                     return $cache;
+                    */
                 }
             ]
         ];

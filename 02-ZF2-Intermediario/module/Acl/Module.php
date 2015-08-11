@@ -74,7 +74,7 @@ class Module
                     $repoPrivilege = $em->getRepository('Acl\Entity\Privilege');
                     $privileges = $repoPrivilege->findAll();
 
-                    return new Permissions\Acl($roles,$resources,$privileges);
+                    return new Permissions\Acl($roles, $resources, $privileges);
                 }
             ],
         ];

@@ -18,7 +18,7 @@
         <tr>
             <td><?= $entity->getId(); ?></td>
             <td><?= $entity->getName(); ?></td>
-            <td><?= $entity->getParent() ? $entity->getParent() : '###'; ?></td>
+            <td><?= $entity->getParent(); ?></td>
             <td><?= $entity->getIsAdmin()? 'Sim' : 'Não'; ?></td>
             <td>
                 <a href="<?= $this->url('acl-admin/default',['controller' => 'roles','action'=>'edit', 'id' => $entity->getId()]); ?>" title="Edição de Role" class="btn alert-info">Editar</a>

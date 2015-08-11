@@ -51,12 +51,13 @@ class Acl extends ClassAcl
     protected function loadRoles()
     {
         foreach($this->roles as $role) {
-            if ($role->getParent())
-                $this->addRole(new Role($role->getName(), new Role($role->getParent()->getName())));
-            $this->addRole(new Role($role->getName()));
+            if ($role->getParent()) {
+                $this->addRole(new Role($role->getName()), new Role($role->getParent()->getName()));
+            } else
+                $this->addRole(new Role($role->getName()));
 
-            if ($role->getIsAdmin())
-                $this->allow($role->getName(), null, null);
+            if($role->getIsAdmin())
+                $this->allow($role->getName(), array() ,array());
         }
     }
 
@@ -66,7 +67,7 @@ class Acl extends ClassAcl
     protected function loadResources()
     {
         foreach($this->resources as $resource) {
-            $this->addResource(new Resource($resource));
+            $this->addResource(new Resource($resource->getName()));
         }
     }
 
@@ -76,7 +77,7 @@ class Acl extends ClassAcl
     protected function loadPrivileges()
     {
         foreach($this->privileges as $privilege) {
-            $this->allow($privilege->getRole()->getName(), $privilege->getReourse()->getName(), $privilege->getName());
+            $this->allow($privilege->getRole()->getName(), $privilege->getResource()->getName(), $privilege->getName());
         }
     }
 }

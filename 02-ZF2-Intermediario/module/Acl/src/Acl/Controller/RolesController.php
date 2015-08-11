@@ -90,4 +90,12 @@ class RolesController extends CrudController
 
         return new ViewModel(['form' => $form]);
     }
+
+    public function testeAction()
+    {
+        $acl = $this->getServiceLocator()->get('Acl\Permissions\Acl');
+
+        echo $acl->isAllowed("Admin", "Posts", "Excluir")? "Permitido" : "Negado";
+        die;
+    }
 }

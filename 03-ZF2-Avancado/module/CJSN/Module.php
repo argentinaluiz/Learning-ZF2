@@ -36,20 +36,15 @@ class Module
         return [
             'factories' => [
                 'Cache' => function($sm) {
-                    $cache = StorageFactory::factory(
-                        [
-                            'adapter' => 'apc',
-                            'options' => [
-                                'ttl' => 10
-                            ],
-                            'plugins' => [
-                                'exception_handler' => [
-                                    'throw_exceptions' => true,
-                                    'Serializer'
-                                ]
-                            ]
-                        ]
-                    );
+                    $cache = StorageFactory::factory([
+                        'adapter' => [
+                            'name'    => 'apc',
+                            'options' => ['ttl' => 3600],
+                        ],
+                        'plugins' => [
+                            'exception_handler' => ['throw_exceptions' => false],
+                        ],
+                    ]);
 
                     return $cache;
                 }

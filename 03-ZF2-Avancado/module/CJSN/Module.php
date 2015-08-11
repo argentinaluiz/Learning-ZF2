@@ -2,6 +2,7 @@
 
 namespace CJSN;
 
+use Zend\Cache\StorageFactory;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -28,5 +29,31 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                'Cache' => function($sm) {
+                    $cache = StorageFactory::factory(
+                        [
+                            'adapter' => 'apc',
+                            'options' => [
+                                'ttl' => 10
+                            ],
+                            'plugins' => [
+                                'exception_handler' => [
+                                    'throw_exceptions' => true,
+                                    'Serializer'
+                                ]
+                            ]
+                        ]
+                    );
+
+                    return $cache;
+                }
+            ]
+        ];
     }
 }

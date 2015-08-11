@@ -38,6 +38,12 @@ class UserRestController extends AbstractRestfulController
         return new JsonModel(['data' => $data]);
     }
 
+    /**
+     * Create User API Rest
+     *
+     * @param mixed $data
+     * @return JsonModel
+     */
     public function create($data)
     {
         $userService = $this->getServiceLocator()->get('User\Service\User');
@@ -51,13 +57,42 @@ class UserRestController extends AbstractRestfulController
         return new JsonModel(['data' => ['success' => false]]);
     }
 
+    /**
+     * Update User API Rest
+     *
+     * @param mixed $id
+     * @param mixed $data
+     * @return JsonModel
+     */
     public function update($id, $data)
     {
+        $data['id'] = $id;
 
+        $userService = $this->getServiceLocator()->get('User\Service\User');
+
+        if ($data) {
+            $user = $userService->update($data);
+            if ($user)
+                return new JsonModel(['data' => ['id' => $user->getId(), 'success' => true]]);
+            return new JsonModel(['data' => ['success' => false]]);
+        }
+        return new JsonModel(['data' => ['success' => false]]);
     }
 
+    /**
+     * Delete User API Rest
+     *
+     * @param mixed $id
+     * @return JsonModel
+     */
     public function delete($id)
     {
+        $userService = $this->getServiceLocator()->get('User\Service\User');
 
+        $result = $userService->delete($id);
+
+        if ($result)
+            return new JsonModel(['data' => ['success' => true]]);
+        return new JsonModel(['data' => ['success' => false]]);
     }
 }

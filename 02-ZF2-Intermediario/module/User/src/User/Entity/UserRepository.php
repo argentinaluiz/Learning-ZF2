@@ -20,4 +20,19 @@ class UserRepository extends EntityRepository
 
         return false;
     }
+
+    public function findArray()
+    {
+        $users = $this->findAll();
+
+        $array = [];
+
+        foreach ($users as $user) {
+            $array[$user->getId()]['id'] = $user->getId();
+            $array[$user->getName()]['name'] = $user->getName();
+            $array[$user->getEmail()]['email'] = $user->getEmail();
+        }
+
+        return $array;
+    }
 }

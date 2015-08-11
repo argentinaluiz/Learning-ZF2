@@ -8,6 +8,7 @@ return [
         'Base',
         'User',
         'Acl',
+        'UserRest',
         'Zf2Whoops',
     ],
     'module_listener_options' => [

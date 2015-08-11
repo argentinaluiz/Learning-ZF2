@@ -3,7 +3,7 @@
 return [
     'controllers' => [
         'invokables' => [
-            'UserRest\Controller\UserRest' => 'UserRest\Controller\UserRestController',
+            'UserRest\Controller\UserRest' => 'UserRest\Controller\UserRestController'
         ]
     ],
     'router' => [
@@ -27,7 +27,7 @@ return [
             'ViewJsonStrategy'
         ]
     ],
-    // MAPPING DOCTRINE WITH YAML
+    //    MAPPING DOCTRINE WITH YAML
     'doctrine' => [
         'driver' => [
             '_driver' => [
@@ -40,7 +40,7 @@ return [
             ],
             'orm_default' => [
                 'drivers' => [
-                    'User\Entity' => 'User' . '_driver',
+                    'User\Entity' => '_driver',
                 ],
             ],
         ],

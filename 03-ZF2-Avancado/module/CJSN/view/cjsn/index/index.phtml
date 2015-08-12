@@ -4,14 +4,16 @@
 </div>
 <div class="jumbotron">
     <p>
-        <?=
-        $this->dateFormat(
-            new DateTime(),
-            IntlDateFormatter::LONG,
-            IntlDateFormatter::MEDIUM,
-            'pt_BR'
-        );
-        ;?>
+
+<!--//        $this->dateFormat(-->
+<!--//            new DateTime(),-->
+<!--//            IntlDateFormatter::LONG,-->
+<!--//            IntlDateFormatter::MEDIUM,-->
+<!--//            'pt_BR'-->
+<!--//        );-->
+
+        <?php $this->plugin('dateFormat')->setTimezone('America/Sao_Paulo')->setLocale('pt_BR');?>
+        <?= $this->dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);?>
     </p>
 </div>
 

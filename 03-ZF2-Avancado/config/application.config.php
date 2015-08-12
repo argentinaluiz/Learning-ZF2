@@ -3,7 +3,8 @@
 return [
     'modules' => [
         'Application',
-        'CJSN'
+        'Base',
+        'CJSN',
     ],
     'module_listener_options' => [
         'module_paths' => [

@@ -28,9 +28,9 @@ return [
         'locale' => 'pt_BR',
         'translation_file_patterns' => [
             [
-                'type'     => 'phparray',
-                'base_dir' => __DIR__ . '/../languageArray',
-                'pattern'  => '%s.php',
+                'type'     => 'gettext',
+                'base_dir' => __DIR__ . '/../languageGetText',
+                'pattern'  => '%s.mo',
             ],
         ],
     ],

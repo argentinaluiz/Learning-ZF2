@@ -4,16 +4,41 @@
 </div>
 <div class="jumbotron">
     <p>
+        <?php
+//        $this->dateFormat(-->
+//            new DateTime(),-->
+//            IntlDateFormatter::LONG,-->
+//            IntlDateFormatter::MEDIUM,-->
+//            'pt_BR'-->
+//        );-->
 
-<!--//        $this->dateFormat(-->
-<!--//            new DateTime(),-->
-<!--//            IntlDateFormatter::LONG,-->
-<!--//            IntlDateFormatter::MEDIUM,-->
-<!--//            'pt_BR'-->
-<!--//        );-->
+//        $this->plugin('dateFormat')->setTimezone('America/Sao_Paulo')->setLocale('pt_BR');
+//        echo $this->dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);
 
-        <?php $this->plugin('dateFormat')->setTimezone('America/Sao_Paulo')->setLocale('pt_BR');?>
-        <?= $this->dateFormat(new DateTime(), IntlDateFormatter::MEDIUM);?>
+        echo $this->numberFormat(
+            1234.56789,
+            NumberFormatter::DECIMAL,
+            NumberFormatter::TYPE_DEFAULT
+        )."<br>";
+
+        echo $this->numberFormat(
+            1234.56789,
+            NumberFormatter::PERCENT,
+            NumberFormatter::TYPE_DEFAULT
+            )."<br>";
+
+        echo $this->numberFormat(
+            0.12654984515454,
+            NumberFormatter::SCIENTIFIC,
+            NumberFormatter::TYPE_DEFAULT
+        )."<br>";
+
+        echo $this->currencyFormat(
+                7.77,
+                'BRL'
+            )."<br>";
+
+        ?>
     </p>
 </div>
 

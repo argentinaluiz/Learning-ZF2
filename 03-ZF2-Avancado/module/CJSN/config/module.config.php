@@ -25,12 +25,12 @@ return [
         ],
     ],
     'translator' => [
-        'locale' => 'en_US',
+        'locale' => 'pt_BR',
         'translation_file_patterns' => [
             [
-                'type'     => 'gettext',
-                'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
+                'type'     => 'phparray',
+                'base_dir' => __DIR__ . '/../languageArray',
+                'pattern'  => '%s.php',
             ],
         ],
     ],

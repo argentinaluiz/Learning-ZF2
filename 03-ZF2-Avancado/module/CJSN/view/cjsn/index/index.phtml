@@ -2,4 +2,16 @@
     <h3><?= $this->translate('Home');?></h3>
     <p><?= $this->translate('Hello');?> Amigo <?= $this->translate('Welcome');?>!!!</p>
 </div>
+<div class="jumbotron">
+    <p>
+        <?=
+        $this->dateFormat(
+            new DateTime(),
+            IntlDateFormatter::LONG,
+            IntlDateFormatter::MEDIUM,
+            'pt_BR'
+        );
+        ;?>
+    </p>
+</div>
 

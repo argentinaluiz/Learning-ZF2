@@ -3,6 +3,9 @@
 return [
     'modules' => [
         'Application',
+        'DoctrineModule',
+        'DoctrineORMModule',
+        'DoctrineDataFixtureModule',
         'Base',
         'CJSN',
     ],

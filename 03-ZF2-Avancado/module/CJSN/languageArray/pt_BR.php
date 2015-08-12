@@ -1,2 +1,6 @@
 <?php
-return [];
+return [
+    'Home' => 'Início',
+    'Hello' => 'Olá',
+    'Welcome' => 'Bem-Vindo'
+];

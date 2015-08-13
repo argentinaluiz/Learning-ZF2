@@ -5,7 +5,6 @@ return [
         'Application',
         'DoctrineModule',
         'DoctrineORMModule',
-        'SONBase',
         'Base',
         'CJSN',
     ],

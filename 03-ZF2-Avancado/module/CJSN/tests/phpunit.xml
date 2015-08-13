@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="Bootstrap.php"
@@ -15,9 +16,9 @@
     </testsuite>
     <filter>
         <whitelist>
-            <directory suffix=".php">../</directory>.
+            <directory suffix=".php">./</directory>.
             <exclude>
-                <file>../Mudule.php</file>
+                <file>../Module.php</file>
                 <directory>../language</directory>
                 <directory>../languageArray</directory>
                 <directory>../languageGetText</directory>

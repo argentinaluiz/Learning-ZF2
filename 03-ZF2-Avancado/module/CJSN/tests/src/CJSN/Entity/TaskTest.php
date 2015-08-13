@@ -6,9 +6,7 @@ class TaskTest extends \PHPUnit_Framework_TestCase
 {
     public function testCheckIfTheClassExist()
     {
-        $this->assertTrue(
-            class_exists($classe = 'CJSN\Entity\Task'),
-            "The class {$classe} not Found"
-        );
+        $class = 'CJSN\Entity\Task';
+        $this->assertTrue(class_exists($class), 'The class not Found');
     }
 }

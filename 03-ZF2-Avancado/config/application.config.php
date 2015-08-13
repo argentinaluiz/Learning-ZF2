@@ -5,7 +5,7 @@ return [
         'Application',
         'DoctrineModule',
         'DoctrineORMModule',
-        'DoctrineDataFixtureModule',
+        'SONBase',
         'Base',
         'CJSN',
     ],
@@ -16,6 +16,7 @@ return [
         ],
         'config_glob_paths' => [
             'config/autoload/{{,*.}global,{,*.}local}.php',
+            __DIR__ . '/test.config.php'
         ],
     ],
 ];

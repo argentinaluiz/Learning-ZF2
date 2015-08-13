@@ -1,0 +1,3 @@
+CJSN\Entity\Task
+ [ ] Check if the class exist
+

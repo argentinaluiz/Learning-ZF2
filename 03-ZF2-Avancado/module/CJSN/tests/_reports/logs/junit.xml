@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CJSN Test" tests="1" assertions="1" failures="1" errors="0" time="0.016850">
+    <testsuite name="CJSN\Entity\TaskTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php" tests="1" assertions="1" failures="1" errors="0" time="0.016850">
+      <testcase name="testCheckIfTheClassExist" class="CJSN\Entity\TaskTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php" line="7" assertions="1" time="0.016850">
+        <failure type="PHPUnit_Framework_ExpectationFailedException">CJSN\Entity\TaskTest::testCheckIfTheClassExist
+The class CJSN\Entity\Task not Found
+Failed asserting that false is true.
+
+/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php:12
+</failure>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

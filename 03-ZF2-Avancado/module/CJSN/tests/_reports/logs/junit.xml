@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="CJSN Test" tests="2" assertions="2" failures="2" errors="0" time="0.033243">
-    <testsuite name="CJSN\Controller\IndexControllerTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Controller/IndexControllerTest.php" tests="1" assertions="1" failures="1" errors="0" time="0.016415">
-      <testcase name="testCheckIfTheClassExist" class="CJSN\Controller\IndexControllerTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Controller/IndexControllerTest.php" line="8" assertions="1" time="0.016415">
-        <failure type="PHPUnit_Framework_ExpectationFailedException">CJSN\Controller\IndexControllerTest::testCheckIfTheClassExist
-The class not Found
-Failed asserting that false is true.
-
-/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Controller/IndexControllerTest.php:12
-</failure>
-      </testcase>
+  <testsuite name="CJSN Test" tests="2" assertions="2" failures="0" errors="0" time="0.028049">
+    <testsuite name="CJSN\Controller\IndexControllerTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Controller/IndexControllerTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.014747">
+      <testcase name="testCheckIfTheClassExist" class="CJSN\Controller\IndexControllerTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Controller/IndexControllerTest.php" line="8" assertions="1" time="0.014747"/>
     </testsuite>
-    <testsuite name="CJSN\Entity\TaskTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php" tests="1" assertions="1" failures="1" errors="0" time="0.016828">
-      <testcase name="testCheckIfTheClassExist" class="CJSN\Entity\TaskTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php" line="7" assertions="1" time="0.016828">
-        <failure type="PHPUnit_Framework_ExpectationFailedException">CJSN\Entity\TaskTest::testCheckIfTheClassExist
-The class not Found
-Failed asserting that false is true.
-
-/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php:10
-</failure>
-      </testcase>
+    <testsuite name="CJSN\Entity\TaskTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.013302">
+      <testcase name="testCheckIfTheClassExist" class="CJSN\Entity\TaskTest" file="/media/candidosouza/Development/GITHUB/Learning-ZF2/03-ZF2-Avancado/module/CJSN/tests/src/CJSN/Entity/TaskTest.php" line="7" assertions="1" time="0.013302"/>
     </testsuite>
   </testsuite>
 </testsuites>

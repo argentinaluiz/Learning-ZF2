@@ -9,6 +9,6 @@ class IndexControllerTest extends \PHPUnit_Framework_TestCase
     {
         $class = 'CJSN\Entity\Task';
         $this->assertTrue(class_exists($class),
-            'The class not Found');
+            'Class not Found');
     }
 }

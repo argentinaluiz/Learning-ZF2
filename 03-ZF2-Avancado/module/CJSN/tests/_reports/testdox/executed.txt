@@ -1,6 +1,6 @@
 CJSN\Controller\IndexController
- [ ] Check if the class exist
+ [x] Check if the class exist
 
 CJSN\Entity\Task
- [ ] Check if the class exist
+ [x] Check if the class exist
 

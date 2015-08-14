@@ -20,6 +20,10 @@ class IndexController extends AbstractActionController
 //
 //        echo $result->format('d/m/Y - H:i:s');
 //        die;
+        $zf2Path = getenv('ZF2_PATH');
+
+        var_dump($zf2Path); die;
+
         return new ViewModel();
     }
 }

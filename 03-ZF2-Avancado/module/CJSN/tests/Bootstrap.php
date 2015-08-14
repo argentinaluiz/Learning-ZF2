@@ -1,7 +1,6 @@
 <?php
 
 namespace CJSN;
-
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
@@ -9,7 +8,6 @@ use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
-
 /**
  * Test bootstrap, for setting up autoloading
  */
@@ -35,7 +33,7 @@ class Bootstrap
                 'module_paths' => $zf2ModulePaths,
             ),
             'modules' => array(
-                'Album'
+                'CJSN'
             )
         );
 
@@ -66,11 +64,11 @@ class Bootstrap
                 $zf2Path = ZF2_PATH;
             } elseif (is_dir($vendorPath . '/ZF2/library')) {
                 $zf2Path = $vendorPath . '/ZF2/library';
-            } elseif (is_dir($vendorPath . '/zendframework/zendframework/library')) {
-                $zf2Path = $vendorPath . '/zendframework/zendframework/library';
+            } elseif (is_dir($vendorPath . '/zendframework/')) {
+                $zf2Path = $vendorPath . '/zendframework/';
             }
         }
-
+        #/zendframework/zendframework/library/Zend/Loader/AutoloaderFactory.php
         if (!$zf2Path) {
             throw new RuntimeException(
                 'Unable to load ZF2. Run `php composer.phar install` or'
@@ -82,7 +80,7 @@ class Bootstrap
             include $vendorPath . '/autoload.php';
         }
 
-        include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
+        include $zf2Path . '/zend-loader/src/AutoloaderFactory.php';
         AutoloaderFactory::factory(array(
             'Zend\Loader\StandardAutoloader' => array(
                 'autoregister_zf' => true,
@@ -107,6 +105,5 @@ class Bootstrap
         return $dir . '/' . $path;
     }
 }
-
 Bootstrap::init();
 Bootstrap::chroot();
